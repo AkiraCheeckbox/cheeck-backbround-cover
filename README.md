@@ -1,15 +1,18 @@
 
 <h1 align="center">
     <img src="https://user-images.githubusercontent.com/14969576/61449520-b55d9900-a987-11e9-9dc9-e81fa416688c.png" alt="logo" width="180"><br>
-    VS Code - Background Cover
+    VS Code / Devin - Background Cover
 </h1>
 
 <p align="center">
-    <b>让你喜欢的图片或视频铺满 VS Code，支持粒子动画、热更新、视频背景、自动轮播等丰富特性</b><br>
-    <a href="https://github.com/vscode-extension/vscode-background-cover">
-        <img src="https://img.shields.io/github/stars/vscode-extension/vscode-background-cover.svg?style=social" alt="stars">
+    <b>让你喜欢的图片或视频铺满 VS Code / Devin，支持粒子动画、热更新、视频背景、自动轮播等丰富特性</b><br>
+    <b>Add your favorite picture or video to cover the entire VS Code / Devin background.</b><br>
+    <a href="https://github.com/AkiraCheeckbox/vscode-background-cover">
+        <img src="https://img.shields.io/github/stars/AkiraCheeckbox/vscode-background-cover.svg?style=social" alt="stars">
     </a>
 </p>
+
+> このリポジトリは <a href="https://github.com/AShujiao/vscode-background-cover">AShujiao/vscode-background-cover</a> を fork し、Devin デスクトップでの動作と個人用の調整を行ったものです。
 
 ![Background Cover Studio preview](resources/readme-preview.jpg)
 

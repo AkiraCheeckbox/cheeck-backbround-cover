@@ -10,8 +10,6 @@
 import {
 	commands,
 	window,
-	Extension,
-	extensions,
 	ExtensionContext,
 	StatusBarAlignment,
 	version as vscodeVersion,
@@ -53,8 +51,7 @@ export function activate(context: ExtensionContext) {
 			const resolved = resolveCurrentImagePath(config.imagePath || '');
 			const hasImage = !!resolved || hasCurrentImageRecord();
 			if (hasImage && !fs.existsSync(CUSTOM_JS_FILE_PATH)) {
-				const ex: Extension<any> | undefined = extensions.getExtension('manasxx.background-cover');
-				const extensionVersion: string = ex ? ex.packageJSON['version'] : '';
+				const extensionVersion = context.extension?.packageJSON?.version || '';
 				window.showInformationMessage(
 					`BackgroundCover ${extensionVersion || ''}：检测到核心文件尚未初始化，需要重新应用背景补丁。是否立即执行？ / BackgroundCover ${extensionVersion || ''}: Core files are not initialized. Apply the background patch now?`,
 					'Apply / 应用',
@@ -203,8 +200,7 @@ export function activate(context: ExtensionContext) {
 
 	 // 首次打开-提示语
 	let openVersion:string|undefined           = context.globalState.get('ext_version');
-	let ex:Extension<any>|undefined = extensions.getExtension('manasxx.background-cover');
-	let version:string           = ex ? ex.packageJSON['version'] : '';
+	let version = context.extension?.packageJSON?.version || '';
 	
 	if(openVersion != version){
 	context.globalState.update('ext_version',version);
@@ -232,7 +228,7 @@ async function checkVSCodeVersionChanged(context: ExtensionContext): Promise<boo
 	if (lastVSCodeVersion && lastVSCodeVersion !== vscodeVersion) {
 		// 弹出提示框确认是否更新背景
 		const value = await window.showInformationMessage(
-			`检测到 VS Code 已从 ${lastVSCodeVersion} 更新到 ${vscodeVersion}，背景补丁可能已被重置。是否重新应用并重载窗口？ / VS Code was updated from ${lastVSCodeVersion} to ${vscodeVersion}. Reapply the background patch and reload the window?`,
+			`检测到 Devin/VS Code 已从 ${lastVSCodeVersion} 更新到 ${vscodeVersion}，背景补丁可能已被重置。是否重新应用并重载窗口？ / Devin/VS Code was updated from ${lastVSCodeVersion} to ${vscodeVersion}. Reapply the background patch and reload the window?`,
 			'Apply and Reload / 应用并重载',
 			'Later / 稍后'
 		);
@@ -250,7 +246,7 @@ async function checkVSCodeVersionChanged(context: ExtensionContext): Promise<boo
 				// process and still pulls from the stale cache. A full restart is required
 				// to clear the main process cache and recompile the patched file.
 				const restartChoice = await window.showInformationMessage(
-					'背景补丁已应用，但需要完全关闭并重新打开 VS Code 才能生效（软重载不会清除编译缓存）。是否现在退出？ / Background patch applied. You must fully quit and restart VS Code for it to take effect (soft reload won\'t clear the compilation cache). Quit now?',
+					'背景补丁已应用，但需要完全关闭并重新打开 Devin/VS Code 才能生效（软重载不会清除编译缓存）。是否现在退出？ / Background patch applied. You must fully quit and restart Devin/VS Code for it to take effect (soft reload won\'t clear the compilation cache). Quit now?',
 					'Quit / 退出',
 					'Later / 稍后'
 				);
@@ -278,7 +274,7 @@ async function checkVSCodeVersionChanged(context: ExtensionContext): Promise<boo
 
 async function promptRestartWindow(): Promise<void> {
 	const value = await window.showInformationMessage(
-		'背景补丁已应用，但需要完全关闭并重新打开 VS Code 才能生效（软重载不会清除编译缓存）。是否现在退出？ / Background patch applied. You must fully quit and restart VS Code for it to take effect (soft reload won\'t clear the compilation cache). Quit now?',
+		'背景补丁已应用，但需要完全关闭并重新打开 Devin/VS Code 才能生效（软重载不会清除编译缓存）。是否现在退出？ / Background patch applied. You must fully quit and restart Devin/VS Code for it to take effect (soft reload won\'t clear the compilation cache). Quit now?',
 		'Quit / 退出',
 		'Later / 稍后'
 	);

@@ -124,6 +124,9 @@ function determineHostPreference(): 'desktop' | 'code-server' | undefined {
     if (appName.includes('code-server') || appName.includes('vscode server')) {
         return 'code-server';
     }
+    if (appName.includes('devin')) {
+        return 'desktop';
+    }
 
     return undefined;
 }
@@ -163,6 +166,7 @@ const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 const DEFAULT_ACCEPT_HEADER = 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8';
 const DOWNLOAD_MAX_ATTEMPTS = 3;
 const DOWNLOAD_RETRY_DELAYS_MS = [0, 500, 1500];
+const MAX_BASE64_IMAGE_BYTES = 2 * 1024 * 1024;
 
 function delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -2524,11 +2528,17 @@ export class FileDom {
             .replace(/\$\{/g, '\\${');
     }
 
-    // 图片转为Base64
+    // 图片转为Base64（大文件跳过防止OOM）
     private async imageToBase64(): Promise<boolean> {
         try {
+            const resolvedPath = path.resolve(this.imagePath);
+            const stats = await fs.promises.stat(resolvedPath);
+            if (stats.size > MAX_BASE64_IMAGE_BYTES) {
+                console.warn(`[FileDom] Image too large for base64 fallback: ${stats.size} bytes`);
+                return false;
+            }
             const extname = path.extname(this.imagePath).substr(1);
-            const imageBuffer = await fs.promises.readFile(path.resolve(this.imagePath));
+            const imageBuffer = await fs.promises.readFile(resolvedPath);
             this.imagePath = `data:image/${extname};base64,${imageBuffer.toString('base64')}`;
             return true;
         } catch {
@@ -2538,15 +2548,27 @@ export class FileDom {
 
     private async prepareCodeServerAsset(sourcePath: string): Promise<string | undefined> {
         try {
+            const resolvedPath = path.resolve(sourcePath);
+            const stats = await fs.promises.stat(resolvedPath);
+            if (stats.size > 50 * 1024 * 1024) {
+                console.warn(`[FileDom] Asset too large for code-server copy: ${stats.size} bytes`);
+                return undefined;
+            }
+
             await fse.ensureDir(CUSTOM_ASSET_DIR);
-            const buffer = await fse.readFile(path.resolve(sourcePath));
-            const hash = crypto.createHash('md5').update(buffer).digest('hex');
+            const hash = await new Promise<string>((resolve, reject) => {
+                const hashStream = crypto.createHash('md5');
+                const input = fs.createReadStream(resolvedPath);
+                input.on('error', reject);
+                input.on('end', () => resolve(hashStream.digest('hex')));
+                input.pipe(hashStream, { end: true });
+            });
             const ext = path.extname(sourcePath) || '.img';
             const fileName = `${hash}${ext}`;
             const destPath = path.join(CUSTOM_ASSET_DIR, fileName);
 
             if (!(await fse.pathExists(destPath))) {
-                await fse.writeFile(destPath, buffer);
+                await fs.promises.copyFile(resolvedPath, destPath);
             }
 
             const relativeUrl = this.getRelativeAssetUrl(destPath);
