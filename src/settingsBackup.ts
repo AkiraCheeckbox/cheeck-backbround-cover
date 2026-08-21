@@ -18,6 +18,14 @@ const EXPORT_CONFIG_KEYS = [
     'sizeModel',
     'blendModel',
     'defaultOnlinePage',
+    'unsplashAccessKey',
+    'pexelsApiKey',
+    'onlineImageQuery',
+    'onlineImageWidth',
+    'onlineImageHeight',
+    'lightImagePath',
+    'darkImagePath',
+    'highContrastImagePath',
 ];
 
 interface BackupData {

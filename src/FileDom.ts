@@ -1414,7 +1414,9 @@ export class FileDom {
                 url: rawPath,
                 opacity: opacity,
                 blur: this.blur,
-                blendMode: this.blendModel
+                blendMode: this.blendModel,
+                volume: this.workConfig.get<number>('videoVolume', 0),
+                playbackRate: this.workConfig.get<number>('videoPlaybackRate', 1)
             };
             // Escape backticks and ${} for template literal safety, but keep backslashes as is (JSON stringified)
             const jsonConfig = JSON.stringify(config)
@@ -1532,6 +1534,92 @@ export class FileDom {
         const petSpritesheetUrl = this.escapeTemplateLiteral(petConfig.spritesheetUrl);
         const petMessagesJson = this.escapeTemplateLiteral(JSON.stringify(this.getPetMessages()));
 
+        const showClock = this.workConfig.get<boolean>('showClock', false);
+        const clockPosition = this.escapeTemplateLiteral(this.workConfig.get<string>('clockPosition', 'top-right'));
+        const clockColor = this.escapeTemplateLiteral(this.workConfig.get<string>('clockColor', 'rgba(255,255,255,0.7)'));
+        const clockSize = this.workConfig.get<number>('clockSize', 24);
+        const agentImagePath = this.escapeTemplateLiteral(this.workConfig.get<string>('agentImagePath', ''));
+
+        const agentSetup = `
+            function applyAgentBackground(targetWindow) {
+                try {
+                    const doc = targetWindow && targetWindow.document;
+                    if (!doc || !doc.body) return;
+                    const url = '${agentImagePath}';
+                    if (!url) {
+                        const el = doc.getElementById('background-cover-agent');
+                        if (el) el.remove();
+                        return;
+                    }
+                    const href = (targetWindow.location && targetWindow.location.href) || '';
+                    const isAgent = href.indexOf('sessions') !== -1 || href.indexOf('agent') !== -1 || href.indexOf('DevinAgent') !== -1;
+                    if (!isAgent) return;
+                    let el = doc.getElementById('background-cover-agent');
+                    if (!el) {
+                        el = doc.createElement('div');
+                        el.id = 'background-cover-agent';
+                        el.style.position = 'fixed';
+                        el.style.top = '0';
+                        el.style.left = '0';
+                        el.style.width = '100%';
+                        el.style.height = '100%';
+                        el.style.zIndex = '3';
+                        el.style.pointerEvents = 'none';
+                        el.style.backgroundSize = 'cover';
+                        el.style.backgroundPosition = 'center';
+                        el.style.backgroundRepeat = 'no-repeat';
+                        doc.body.appendChild(el);
+                    }
+                    el.style.backgroundImage = 'url(' + url + ')';
+                } catch (e) {
+                    console.error('[BackgroundCover] applyAgentBackground error:', e);
+                }
+            }
+        `;
+
+        const clockSetup = `
+            function applyClock(targetWindow) {
+                try {
+                    const doc = targetWindow && targetWindow.document;
+                    if (!doc || !doc.body) return;
+                    let wrapper = doc.getElementById('background-cover-clock');
+                    if (!${showClock}) {
+                        if (wrapper) wrapper.remove();
+                        return;
+                    }
+                    if (!wrapper) {
+                        wrapper = doc.createElement('div');
+                        wrapper.id = 'background-cover-clock';
+                        wrapper.style.position = 'fixed';
+                        wrapper.style.zIndex = '9999';
+                        wrapper.style.pointerEvents = 'none';
+                        wrapper.style.fontFamily = 'monospace';
+                        wrapper.style.fontSize = '${clockSize}px';
+                        wrapper.style.color = '${clockColor}';
+                        wrapper.style.textShadow = '0 0 4px rgba(0,0,0,0.5)';
+                        wrapper.style.whiteSpace = 'pre';
+                        wrapper.style.padding = '12px 16px';
+                        const pos = '${clockPosition}';
+                        if (pos.indexOf('top') !== -1) wrapper.style.top = '16px';
+                        if (pos.indexOf('bottom') !== -1) wrapper.style.bottom = '16px';
+                        if (pos.indexOf('left') !== -1) wrapper.style.left = '16px';
+                        if (pos.indexOf('right') !== -1) wrapper.style.right = '16px';
+                        doc.body.appendChild(wrapper);
+                    }
+                    function update() {
+                        const now = new Date();
+                        const pad = n => String(n).padStart(2, '0');
+                        wrapper.textContent = now.getFullYear() + '/' + pad(now.getMonth() + 1) + '/' + pad(now.getDate()) + '\\n' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+                    }
+                    update();
+                    if (wrapper.__clockInterval) clearInterval(wrapper.__clockInterval);
+                    wrapper.__clockInterval = setInterval(update, 1000);
+                } catch (e) {
+                    console.error('[BackgroundCover] applyClock error:', e);
+                }
+            }
+        `;
+
         const videoSetup = `
             function applyVideo(targetWindow, config) {
                 try {
@@ -1548,6 +1636,8 @@ export class FileDom {
                         video.autoplay = true;
                         video.loop = true;
                         video.muted = true;
+                        video.volume = typeof config.volume === 'number' ? config.volume : 0;
+                        video.playbackRate = typeof config.playbackRate === 'number' ? config.playbackRate : 1;
                         video.style.position = 'absolute';
                         video.style.top = '0';
                         video.style.left = '0';
@@ -1583,6 +1673,8 @@ export class FileDom {
                     video.style.opacity = config.opacity + '';
                     video.style.filter = 'blur(' + config.blur + 'px)';
                     video.style.mixBlendMode = config.blendMode;
+                    if (typeof config.volume === 'number') { video.volume = config.volume; video.muted = config.volume === 0; }
+                    if (typeof config.playbackRate === 'number') { video.playbackRate = config.playbackRate; }
 
                     if (video.paused) {
                         video.play().catch(e => {
@@ -1828,6 +1920,10 @@ export class FileDom {
                 return window.__backgroundCoverCssUrl || cssUrl;
             }
             
+            ${agentSetup}
+
+            ${clockSetup}
+
             ${videoSetup}
 
             function applyStyle(targetWindow, css) {
@@ -1840,8 +1936,65 @@ export class FileDom {
                         style.id = 'background-cover-style';
                         doc.head.appendChild(style);
                     }
-                    if (style.textContent !== css) {
-                        style.textContent = css;
+                    if (style.textContent === css) { return; }
+
+                    // Crossfade: capture the current background image and composite it
+                    // into a fixed overlay that fades out, revealing the new image below.
+                    let oldBg = '';
+                    let oldOpacity = '1';
+                    let oldFilter = '';
+                    let oldSize = 'cover';
+                    let oldPosition = 'center';
+                    let oldRepeat = 'no-repeat';
+                    try {
+                        const beforeStyle = targetWindow.getComputedStyle(doc.body, '::before');
+                        oldBg = beforeStyle.backgroundImage;
+                        oldOpacity = beforeStyle.opacity;
+                        oldFilter = beforeStyle.filter;
+                        oldSize = beforeStyle.backgroundSize;
+                        oldPosition = beforeStyle.backgroundPosition;
+                        oldRepeat = beforeStyle.backgroundRepeat;
+                    } catch (e) {
+                        // getComputedStyle for pseudo-elements may throw in some contexts.
+                    }
+
+                    const hasOldBg = oldBg && oldBg !== 'none' && style.textContent && style.textContent.trim().length > 0;
+                    let fade = null;
+                    if (hasOldBg) {
+                        fade = doc.getElementById('background-cover-crossfade');
+                        if (!fade) {
+                            fade = doc.createElement('div');
+                            fade.id = 'background-cover-crossfade';
+                            fade.style.position = 'fixed';
+                            fade.style.top = '0';
+                            fade.style.left = '0';
+                            fade.style.width = '100%';
+                            fade.style.height = '100%';
+                            fade.style.zIndex = '3';
+                            fade.style.pointerEvents = 'none';
+                            fade.style.backgroundSize = oldSize || 'cover';
+                            fade.style.backgroundPosition = oldPosition || 'center';
+                            fade.style.backgroundRepeat = oldRepeat || 'no-repeat';
+                            fade.style.backgroundImage = oldBg;
+                            fade.style.opacity = oldOpacity;
+                            fade.style.filter = oldFilter;
+                            fade.style.transition = 'opacity 0.6s ease-in-out';
+                            doc.body.appendChild(fade);
+                        }
+                    }
+
+                    style.textContent = css;
+
+                    if (fade) {
+                        try {
+                            void fade.offsetWidth; // force reflow
+                        } catch (e) {}
+                        fade.style.opacity = '0';
+                        setTimeout(() => {
+                            try {
+                                if (fade && fade.parentNode) { fade.remove(); }
+                            } catch (e) {}
+                        }, 650);
                     }
                 } catch (e) {
                     console.error('[BackgroundCover] applyStyle error:', e);
@@ -1879,6 +2032,8 @@ export class FileDom {
                 }
                 applyStyle(w, lastCss);
                 applyVideo(w, lastVideoConfig);
+                applyClock(w);
+                applyAgentBackground(w);
             }
 
             function applyToAll() {

@@ -2,7 +2,7 @@
     "name": "cheeck-backbround-cover",
     "displayName": "Cheeck Backbround Cover",
     "description": "好きな画像や動画を Devin / VS Code: の背景全体に敷き詰める拡張機能（ホットリロード対応）。",
-    "version": "3.6.4",
+    "version": "3.6.5",
     "publisher": "AkiraCheeckbox",
     "engines": {
         "vscode": "^1.38.0"
@@ -55,6 +55,30 @@
             {
                 "command": "extension.backgroundCover.importSettings",
                 "title": "backgroundCover - 設定をインポート"
+            },
+            {
+                "command": "extension.backgroundCover.savePreset",
+                "title": "backgroundCover - プリセットを保存"
+            },
+            {
+                "command": "extension.backgroundCover.loadPreset",
+                "title": "backgroundCover - プリセットを適用"
+            },
+            {
+                "command": "extension.backgroundCover.deletePreset",
+                "title": "backgroundCover - プリセットを削除"
+            },
+            {
+                "command": "extension.backgroundCover.randomOnlineImage",
+                "title": "backgroundCover - オンライン画像をランダム取得"
+            },
+            {
+                "command": "extension.backgroundCover.tagCurrentImage",
+                "title": "backgroundCover - 背景にタグを付ける"
+            },
+            {
+                "command": "extension.backgroundCover.searchImagesByTag",
+                "title": "backgroundCover - タグで画像を検索"
             },
             {
                 "command": "backgroundCover.refreshEntry",
@@ -182,6 +206,73 @@
                     "type": "string",
                     "default": "https://vs.20988.xyz/d/24-vscodebei-jing-tu-tu-ku",
                     "description": "オンライン画像ギャラリーのデフォルトページ"
+                },
+                "backgroundCover.unsplashAccessKey": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Unsplash API Access Key（空欄の場合は Picsum を使用）"
+                },
+                "backgroundCover.pexelsApiKey": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Pexels API Key（unsplashAccessKey が空の場合に使用）"
+                },
+                "backgroundCover.onlineImageQuery": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Unsplash / Pexels 検索キーワード"
+                },
+                "backgroundCover.onlineImageWidth": {
+                    "type": "number",
+                    "default": 1920,
+                    "description": "Picsum 使用時の画像幅"
+                },
+                "backgroundCover.onlineImageHeight": {
+                    "type": "number",
+                    "default": 1080,
+                    "description": "Picsum 使用時の画像高さ"
+                },
+                "backgroundCover.videoVolume": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 0,
+                    "description": "動画背景の音量（0 = ミュート）"
+                },
+                "backgroundCover.videoPlaybackRate": {
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 5,
+                    "default": 1,
+                    "description": "動画背景の再生速度"
+                },
+                "backgroundCover.showClock": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "背景の上に時計を表示します"
+                },
+                "backgroundCover.clockPosition": {
+                    "type": "string",
+                    "enum": ["top-right", "top-left", "bottom-right", "bottom-left"],
+                    "default": "top-right",
+                    "description": "時計の表示位置"
+                },
+                "backgroundCover.clockColor": {
+                    "type": "string",
+                    "default": "rgba(255,255,255,0.7)",
+                    "description": "時計の文字色"
+                },
+                "backgroundCover.clockSize": {
+                    "type": "number",
+                    "minimum": 10,
+                    "maximum": 120,
+                    "default": 24,
+                    "description": "時計のフォントサイズ (px)"
+                },
+                "backgroundCover.agentImagePath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Devin Agent ウィンドウ用の背景画像パス"
                 }
             }
         },

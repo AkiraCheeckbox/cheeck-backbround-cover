@@ -19,6 +19,9 @@ import {
 import * as fs from 'fs';
 import { PickList } from './PickList';
 import { exportSettings, importSettings } from './settingsBackup';
+import { savePreset, loadPreset, deletePreset } from './presets';
+import { applyRandomOnlineImage } from './onlineImageSources';
+import { tagCurrentImage, searchImagesByTag } from './imageTags';
 import vsHelp from './vsHelp';
 import ReaderViewProvider from './readerView';
 import { setContext } from './global';
@@ -109,6 +112,12 @@ export function activate(context: ExtensionContext) {
 	context.subscriptions.push(nextRandomCommand);
 	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.exportSettings', () => exportSettings(context)));
 	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.importSettings', () => importSettings(context)));
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.savePreset', savePreset));
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.loadPreset', loadPreset));
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.deletePreset', deletePreset));
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.randomOnlineImage', applyRandomOnlineImage));
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.tagCurrentImage', tagCurrentImage));
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.searchImagesByTag', searchImagesByTag));
 	context.subscriptions.push(particleEffectCommand);
 	context.subscriptions.push(showMenuCommand);
 
