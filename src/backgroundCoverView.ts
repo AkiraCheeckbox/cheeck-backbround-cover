@@ -79,12 +79,52 @@ const messages = {
     }
 };
 
+const messagesJa = {
+    imageSource: '画像ソース',
+    appearance: '外観設定',
+    autoRandom: '自動ランダム',
+    particleEffects: 'パーティクル効果',
+    actions: 'アクション',
+    currentImage: '現在の画像',
+    selectImage: '画像 / 動画ファイルを選択...',
+    addDirectory: 'フォルダを追加...',
+    inputPath: 'パス / URL を入力...',
+    opacity: '透明度',
+    blur: 'ぼかし',
+    sizeMode: 'サイズモード',
+    blendMode: 'ブレンドモード',
+    enabled: '有効',
+    interval: '間隔 (秒)',
+    sourceFolder: 'ソースフォルダ',
+    openSettings: '設定を開く...',
+    toggleParticles: 'パーティクルを切り替え',
+    particleOpacity: 'パーティクル透明度',
+    particleColor: 'パーティクル色',
+    particleCount: 'パーティクル数',
+    clearBackground: '背景をクリア',
+    refresh: '更新',
+    refreshFolder: 'オンラインフォルダを更新',
+    openCacheFolder: 'キャッシュフォルダを開く',
+    supportAuthor: '作者を支援',
+    setSizeMode: 'サイズモードを設定',
+    setBlendMode: 'ブレンドモードを設定',
+    toggle: '切り替え',
+    notSet: '未設定',
+    none: 'なし',
+    petAssistant: 'トップペット',
+    togglePet: 'オン / オフ',
+    selectPet: 'ペットを選択'
+};
+
 function t(key: keyof typeof messages.en): string {
     const lang = vscode.env.language;
     if (lang.startsWith('zh')) {
         return messages.zh[key];
     }
-    return messages.en[key];
+    if (lang.startsWith('ja')) {
+        return messagesJa[key];
+    }
+    return messagesJa[key];
 }
 
 // Define a data structure for tree items
@@ -180,7 +220,7 @@ export class BackgroundCoverViewProvider implements vscode.TreeDataProvider<Conf
             }
 
             if (uris.length === 0) {
-                vscode.window.showWarningMessage('未识别到可用的图片文件或 URL / No image file or URL detected in drop.');
+                vscode.window.showWarningMessage('ドロップされたアイテムから画像ファイルまたは URL を検出できませんでした。');
                 return;
             }
 
@@ -194,10 +234,10 @@ export class BackgroundCoverViewProvider implements vscode.TreeDataProvider<Conf
                 await vscode.commands.executeCommand('backgroundCover.runAction', ActionType.UpdateBackground, first.fsPath);
                 return;
             }
-            vscode.window.showWarningMessage(`不支持的拖拽类型: ${first.scheme} / Unsupported drop scheme.`);
+            vscode.window.showWarningMessage(`未対応のドロップ形式です: ${first.scheme}`);
         } catch (e: any) {
             console.error('[BackgroundCover] handleDrop failed:', e);
-            vscode.window.showErrorMessage(`拖拽设置背景失败: ${e?.message ?? e}`);
+            vscode.window.showErrorMessage(`ドロップによる背景設定に失敗しました: ${e?.message ?? e}`);
         }
     }
 

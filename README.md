@@ -1,159 +1,168 @@
 
 <h1 align="center">
     <img src="https://user-images.githubusercontent.com/14969576/61449520-b55d9900-a987-11e9-9dc9-e81fa416688c.png" alt="logo" width="180"><br>
-    VS Code / Devin - Background Cover
+    VS Code / Devin 背景カバー
 </h1>
 
 <p align="center">
-    <b>让你喜欢的图片或视频铺满 VS Code / Devin，支持粒子动画、热更新、视频背景、自动轮播等丰富特性</b><br>
-    <b>Add your favorite picture or video to cover the entire VS Code / Devin background.</b><br>
+    <b>好きな画像や動画を VS Code / Devin の背景全体に敷き詰めます。パーティクルアニメーション、ホットリロード、動画背景、自動切り替えなど、豊富な機能を搭載しています。</b><br>
     <a href="https://github.com/AkiraCheeckbox/vscode-background-cover">
         <img src="https://img.shields.io/github/stars/AkiraCheeckbox/vscode-background-cover.svg?style=social" alt="stars">
     </a>
 </p>
 
-> このリポジトリは <a href="https://github.com/AShujiao/vscode-background-cover">AShujiao/vscode-background-cover</a> を fork し、Devin デスクトップでの動作と個人用の調整を行ったものです。
+> このリポジトリは <a href="https://github.com/AShujiao/vscode-background-cover">AShujiao/vscode-background-cover</a> を fork し、Devin デスクトップでの動作と日本語化、個人用の調整を行ったものです。
 
 ![Background Cover Studio preview](resources/readme-preview.jpg)
 
 
-## 🚀 3.6.1 主要更新
+## 🚀 3.6.3 主な更新点
 
-1. **🎨 透明度/模糊度按窗口独立**：每个工作区可各自保存并显示不同的透明度与模糊度数值，在一个窗口调透明度/模糊度不再把其他窗口的数值刷成同一个（webview 滑块与树视图均展示当前窗口实际生效的值）。
-2. **🧹 设置更干净**：独立模式下透明度/模糊度不再回写全局 settings.json，避免多窗口串值；切回「全部窗口共用」后恢复全局共享行为，老用户 settings.json 里的旧值继续作为兜底。
+1. **🎨 透明度 / ぼかしをウィンドウごとに独立**：各ワークスペースで異なる透明度とぼかし値を保存・表示できます。あるウィンドウで調整しても、他のウィンドウの値は変わりません（webview スライダーとツリービューには、現在のウィンドウで実際に有効な値が表示されます）。
+2. **🧹 設定がすっきり**：独立モードでは透明度 / ぼかしをグローバルな settings.json に書き戻さず、複数ウィンドウ間で値が混ざるのを防ぎます。「全ウィンドウで共有」に戻すと、再びグローバルな共有動作に戻ります。
+3. **🇯🇵 日本語化**：パネル、通知、設定、README を日本語にしました。
 
 ---
 
-## 🌟 功能特性
+## 🌟 機能一覧
 
-- **Studio 配置面板**：首页、本地图库、在线图库、高级设置、装饰效果集中管理。
-- **界面主题**：支持默认主题和守望主题，可在面板右上角切换。
-- **顶部小宠物**：内置多款可爱宠物，支持同步 `~/.codex/pets` / `CODEX_HOME/pets` 中的 Codex 宠物，并可自定义多行冒泡文案。
-- **图片/视频背景**：支持本地图片、网络图片、本地视频、在线视频。
-- **热更新**：切换背景即刻生效，无需重启 VS Code。
-- **多窗口独立背景**：每个窗口可显示各自的背景图，也可切回全部窗口共用。
-- **AgentView 支持**：支持 VS Code AgentView / Agent Sessions 独立窗口背景显示。
-- **自动轮播**：多张图片/视频可定时自动切换。
-- **粒子动画**：集成鼠标跟随粒子特效，支持数量、透明度、预设颜色和自定义颜色。
-- **本地图库**：支持文件夹图片预览、最近使用记录、分页浏览和拖拽设置背景。
-- **在线入口**：在线页顶部支持输入 URL、刷新在线图库和浏览器打开社区图库。
-- **可视化配置**：左侧 Studio 面板一键设置，支持中英双语。
-- **透明度/模糊/填充模式**：自定义背景透明度、模糊度、填充方式；多窗口模式下每个工作区可各自独立设置透明度与模糊度。
-- **高级解析**：支持 JSON API、静态 HTML、图库帖子等多种图片源。
-- **在线图库**：内置社区壁纸浏览、上传与一键应用。
-- **跨平台支持**：兼容 Windows、MacOS、Linux 及 Code-Server。
-- **自动权限处理**：Windows 下自动获取写入权限，无需手动操作。
+- **Studio 設定パネル**：ホーム、ローカルギャラリー、オンラインギャラリー、詳細設定、装飾を一元管理。
+- **UI テーマ**：デフォルトテーマとオーバーウォッチテーマをサポート。パネル右上で切り替え可能。
+- **トップペット**：かわいいペットを複数内蔵。`~/.codex/pets` / `CODEX_HOME/pets` の Codex ペットとの同期にも対応し、吹き出しメッセージも自由に設定できます。
+- **画像 / 動画背景**：ローカル画像、ネット画像、ローカル動画、オンライン動画に対応。
+- **ホットリロード**：背景を切り替えても、VS Code: を再起動せずに即座に反映。
+- **マルチウィンドウ独立背景**：各ウィンドウで異なる背景を表示することも、全ウィンドウで共有することも可能。
+- **AgentView 対応**：VS Code: AgentView / Agent Sessions の独立ウィンドウにも背景を表示。
+- **自動切り替え**：複数の画像 / 動画を指定した間隔で自動的に切り替え。
+- **パーティクルアニメーション**：マウスに追随するパーティクルエフェクトを搭載。数、透明度、プリセットカラー、カスタムカラーが設定可能。
+- **ローカルギャラリー**：フォルダ内画像のプレビュー、最近使用履歴、ページング、背景へのドラッグ設定に対応。
+- **オンライン入口**：上部から URL を入力、オンラインギャラリーの更新、コミュニティギャラリーをブラウザで開く。
+- **ビジュアル設定**：左側の Studio パネルからワンタッチで設定。
+- **透明度 / ぼかし / サイズ調整**：背景の透明度、ぼかし、サイズ調整をカスタマイズ。マルチウィンドウモードではワークスペースごとに独立設定可能。
+- **高度な解析**：JSON API、静的 HTML、ギャラリーの投稿など、さまざまな画像ソースをサポート。
+- **オンラインギャラリー**：コミュニティ壁紙の閲覧、アップロード、ワンタッチ適用に対応。
+- **クロスプラットフォーム**：Windows、macOS、Linux、Code-Server に対応。
+- **自動権限処理**：Windows では書き込み権限を自動取得するため、手動操作が不要。
 
 
-## ⚠️ 注意事项
+## ⚠️ 注意事項
 
-> 本插件通过修改 VS Code 内部文件实现效果。
+> この拡張機能は VS Code: の内部ファイルを変更して効果を実現しています。
 
-1. **首次使用/升级到 3.x**：需重新获取权限（Hook），并重启一次 VS Code。
-2. **初次安装/更新**：如遇“安装损坏”提示，请点击【不再提示】。
-3. **背景重叠/异常**：升级后如遇背景重叠，请重启 VS Code。
-4. **还原方法**：如 VS Code 无法打开，请手动还原：
-   - 路径：`Microsoft VS Code\resources\app\out\vs\workbench\`
-   - 将 `workbench.desktop.main.js.bak` 重命名为 `workbench.desktop.main.js`
+1. **初回使用 / 3.x へのアップグレード**：権限（Hook）を再取得し、VS Code: を一度再起動する必要があります。
+2. **初回インストール / 更新**：「インストールが破損しています」という表示が出た場合は、【今後表示しない】をクリックしてください。
+3. **背景の重ね表示 / 表示崩れ**：アップグレード後に背景が重なる場合は、VS Code: を再起動してください。
+4. **復元方法**：VS Code: が開かなくなった場合は手動で復元してください：
+   - パス：`Microsoft VS Code\resources\app\out\vs\workbench\`
+   - `workbench.desktop.main.js.bak` を `workbench.desktop.main.js` にリネーム
 
 ![](https://user-images.githubusercontent.com/14969576/47090529-b1b0b080-d255-11e8-8812-d541cb1c3852.png)
 
 
 
 
-## 🖼️ 效果展示
+## 🖼️ 効果サンプル
 
-[在线图库/更多壁纸](https://vs.20988.xyz/d/24-vscodebei-jing-tu-tu-ku)
+[オンラインギャラリー / その他の壁紙](https://vs.20988.xyz/d/24-vscodebei-jing-tu-tu-ku)
 
 ![](https://github.com/user-attachments/assets/7bd68f60-55af-42e8-980a-99bf1b3e078d)
 ![](https://github.com/user-attachments/assets/047617e6-7e09-441e-b9df-ae6a2bb940d9)
 ![](https://github.com/user-attachments/assets/3c0a214f-7563-43b9-9579-314647808ccf)
 
 
-## ⚙️ 配置方式
+## ⚙️ 設定方法
 
-> **推荐**：点击左侧活动栏的 `Background Cover` 图标，打开可视化配置面板，所有设置一目了然。
+> **推奨**：左側アクティビティバーの `backgroundCover` アイコンをクリックして、ビジュアル設定パネルを開きます。すべての設定が一目でわかります。
 
-- **图片/视频源**：支持本地文件、文件夹、网络链接。
-- **外观**：调整透明度、模糊度、填充模式。
-- **在线**：输入 URL、浏览在线图库、刷新社区图库。
-- **装饰**：配置粒子特效、顶部小宠物、Codex 宠物同步和宠物冒泡文案。
-- **高级**：配置自动轮播、混合模式和缓存目录。
+- **画像 / 動画ソース**：ローカルファイル、フォルダ、ネットワークリンクをサポート。
+- **外観**：透明度、ぼかし、サイズ調整モードを変更。
+- **オンライン**：URL を入力、オンラインギャラリーを閲覧、コミュニティギャラリーを更新。
+- **装飾**：パーティクルエフェクト、トップペット、Codex ペット同期、ペットの吹き出しメッセージを設定。
+- **詳細**：自動切り替え、ブレンドモード、キャッシュディレクトリを設定。
 
-*也可通过命令面板 `Ctrl + Shift + P` -> `backgroundCover - start` 进入设置*
-
-
-## 📝 快捷键与使用
-
-- **切换背景**：点击底部状态栏按钮
-- **打开/配置**：`Ctrl + Shift + P` -> `backgroundCover - start`
-- **重新应用**：VS Code 更新后如背景消失，请重新设置
-
-> **首次升级到 3.x 必须重新授权并重启 VS Code 才能生效！**
+*コマンドパレット `Ctrl + Shift + P` -> `backgroundCover - 開始` からも設定を開けます。*
 
 
+## 📝 ショートカットと使い方
+
+- **背景切り替え**：下部ステータスバーのボタンをクリック
+- **開く / 設定**：`Ctrl + Shift + P` -> `backgroundCover - 開始`
+- **再適用**：VS Code: 更新後に背景が消えた場合は、設定から再適用してください
+
+> **3.x へ初めてアップグレードする際は、権限を再取得して VS Code: を再起動する必要があります！**
 
 
-## 🗑️ 卸载说明
-
-1. 禁用/卸载插件
-2. 重启 VS Code
-3. 插件会自动清理残留背景
 
 
-## ❓ 常见问题
+## 🗑️ アンインストール手順
 
-**Q: 安装后无反应？**
-A: 请确保有管理员权限（右键 VS Code 图标 -> 以管理员身份运行）。
+1. 拡張機能を無効化 / アンインストール
+2. VS Code: を再起動
+3. 拡張機能が自動で背景の残骸をクリーンアップします
 
-**Q: Mac 如何授权？**
-A: 插件会自动请求密码，或手动 `sudo chown` 相关文件。
+
+## ❓ よくある質問
+
+**Q: インストール後に反応がない？**
+A: 管理者権限があるか確認してください（Windows の場合は VS Code: アイコンを右クリックして「管理者として実行」）。
+
+**Q: Mac で権限を付与するには？**
+A: 拡張機能が自動でパスワードを要求します。または手動で `sudo chown` してください。
 
 ---
 
-## 📝 更新日志
+## 📝 更新履歴
 
-[完整日志](https://github.com/vscode-extension/vscode-background-cover/blob/master/CHANGELOG.md)
+[完全なログ](https://github.com/vscode-extension/vscode-background-cover/blob/master/CHANGELOG.md)
+
+#### ver 3.6.3 (2026/08/21)
+
+1. 拡張機能全体の UI、通知、webview、コマンド、設定、README を日本語化しました。
+2. Devin デスクトップでの動作を確認・調整しました。
+
+#### ver 3.6.2 (2026/08/21)
+
+1. 日本語 UI・通知・README に対応しました。
+2. Devin デスクトップでの動作を確認・調整しました。
 
 #### ver 3.6.1 (2026/08/18)
 
-1. 修复多窗口独立背景模式下，透明度 / 模糊度仍按全局设置共享的问题：每个窗口（工作区）可各自保存并显示不同的透明度与模糊度数值，webview 滑块、树视图与设置面板均展示当前窗口实际生效的值（独立模式下不再回写全局 settings.json；切回「全部窗口共用」后恢复全局共享行为）。
+1. マルチウィンドウ独立背景モードで、透明度 / ぼかしがグローバル設定で共有されていた問題を修正。各ウィンドウ（ワークスペース）で異なる透明度とぼかし値を保存・表示できるようになりました（webview スライダー、ツリービュー、設定パネルには現在のウィンドウで実際に有効な値が表示されます）。
 
 #### ver 3.6.0 (2026/08/14)
 
-1. 新增多窗口独立背景，每个窗口可显示各自的背景图（可在高级设置中切回全部窗口共用）（[#226](https://github.com/AShujiao/vscode-background-cover/pull/226) by @Aierlanta）。
-2. 优化多窗口授权体验，新开窗口不再反复弹出 UAC 授权窗口。
-3. 优化自动换图容错，网络失败会静默重试或换图，不再弹窗打断（[#225](https://github.com/AShujiao/vscode-background-cover/pull/225) by @Aierlanta）。
-    感谢 @Aierlanta 的贡献！
+1. マルチウィンドウ独立背景を追加。各ウィンドウで異なる背景を表示可能（詳細設定で全ウィンドウ共有に切り替え可能）（[#226](https://github.com/AShujiao/vscode-background-cover/pull/226) by @Aierlanta）。
+2. マルチウィンドウ権限体験を最適化。新規ウィンドウで UAC 権限ダイアログが繰り返し表示されないように。
+3. 自動背景切り替えの耐障害性を向上。ネットワーク失敗時に静かに再試行または別画像に切り替え、ダイアログで中断しないように（[#225](https://github.com/AShujiao/vscode-background-cover/pull/225) by @Aierlanta）。
+    @Aierlanta さん、ご協力ありがとうございます！
 
 #### ver 3.5.3 (2026/07/06)
 
-1. 修复 VS Code 更新后背景不生效、必须手动关闭再重新打开才生效的问题（现代 VS Code 的核心界面编译缓存由主进程持有，软重载无法清除，现在会引导完全退出并重启）。
-2. 修复较新版本 VS Code 安全策略（Trusted Types）下打补丁后背景 / 宠物 / 粒子完全不显示的问题（注入方式重构为「稳定引导 + 外置动态脚本」）。
-3. 新增适配 Cursor Agent Window（Glass 窗口）背景显示，复用附加 bundle 机制自动打补丁与卸载还原（[#214](https://github.com/AShujiao/vscode-background-cover/pull/214) by @Aierlanta）。
-4. 优化仅切换背景图片时不再重建装饰运行时，宠物位置与粒子状态得以保留。
-5. 装饰配置面板「重启生效」按钮移到顶部并优化提示文案。
+1. VS Code: 更新後に背景が反映されず、手動で閉じて開き直さないと有効にならなかった問題を修正（最新の VS Code: ではコア UI のコンパイルキャッシュをメインプロセスが保持しており、ソフト再読み込みではクリアできないため、完全な終了と再起動を案内します）。
+2. 新しい VS Code: のセキュリティポリシー（Trusted Types）下で、パッチ適用後に背景 / ペット / パーティクルが一切表示されなくなっていた問題を修正（注入方式を「安定したブートストラップ + 外部動的スクリプト」に再構築）。
+3. Cursor Agent Window（Glass ウィンドウ）の背景表示に対応。追加 bundle 機構を活用して自動的にパッチの適用とアンインストール時の復元を行うように（[#214](https://github.com/AShujiao/vscode-background-cover/pull/214) by @Aierlanta）。
+4. 背景画像のみを切り替える際に装飾ランタイムを再構築しないように最適化。ペット位置とパーティクル状態が保持されます。
+5. 装飾設定パネルの「再起動で反映」ボタンを上部に移動し、表示文案を最適化。
 
 #### ver 3.5.2 (2026/06/04)
 
-1. 修复新版本 VS Code（如 1.123.0）因 Node 移除 `util.isObject`，首次初始化报错 `Failed to write CSS file: TypeError: Node.util.isObject is not a function` 的问题（将 `sudo-prompt` 替换为官方维护的 `@vscode/sudo-prompt`）。
+1. 新しい VS Code:（例: 1.123.0）で Node が `util.isObject` を削除したことにより、初回初期化時に `Failed to write CSS file: TypeError: Node.util.isObject is not a function` とエラーになっていた問題を修正（`sudo-prompt` を公式メンテナンスの `@vscode/sudo-prompt` に置き換え）。
 
 #### ver 3.5.1 (2026/05/25)
 
-1. 修复自动随机更换背景时遇到大体积本地图片会弹出确认提示并阻断轮播的问题。
-2. 修复 VS Code 更新后重新应用背景的提示文案仍显示 3.0 版本信息的问题。
-3. 修复 VS Code 更新后点击确认重新应用背景时未正确触发窗口重载的问题。
+1. 自動ランダム背景切り替えで大きなローカル画像に遭遇した際に確認ダイアログが表示され、切り替えが止まっていた問題を修正。
+2. VS Code: 更新後の背景再適用時の表示文案に、3.0 バージョン情報が残っていた問題を修正。
+3. VS Code: 更新後に「背景を再適用」をクリックしても、ウィンドウの再読み込みが正しくトリガーされなかった問題を修正。
 
 ---
 
-### 致谢
+### 謝辞
 
 - [vscode-background](https://github.com/shalldie/vscode-background)
 - [feature_restart_random_image](https://github.com/AShujiao/vscode-background-cover/pull/2)
-- [Canvas-nest.js](https://github.com/hustcc/canvas-nest.js) 网页粒子背景插件
+- [Canvas-nest.js](https://github.com/hustcc/canvas-nest.js) ウェブパーティクル背景プラグイン
 
-## 贡献者
-默认展示所有贡献者，如需移除请提交 PR。
+## コントリビューター
 
 [<img alt="AShujiao" src="https://avatars2.githubusercontent.com/u/14969576?s=460&v=4" width="90">](https://github.com/AShujiao)
 [<img alt="yjhmelody" src="https://avatars0.githubusercontent.com/u/16250688?s=460&v=4" width="90">](https://github.com/yjhmelody)
@@ -167,15 +176,16 @@ A: 插件会自动请求密码，或手动 `sudo chown` 相关文件。
 [<img alt="Aierlanta" src="https://avatars.githubusercontent.com/u/90670661?v=4" width="90">](https://github.com/Aierlanta)
 [<img alt="MaxQian888" src="https://github.com/MaxQian888.png?size=90" width="90">](https://github.com/MaxQian888)
 
-### 相关信息
+### 関連情報
 
 - [GitHub](https://github.com/AShujiao/vscode-background-cover)
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=manasxx.background-cover)
 
-**赞助作者**
-> 如果插件对你有帮助，欢迎请作者喝杯咖啡~
+**作者を支援**
+> この拡張機能が役立った場合は、作者にコーヒーをおごってあげてください。
 
 [<img alt="lauset" src="https://zuhaowan-video.oss-cn-beijing.aliyuncs.com/1587571200/177327269-5cd91cdc-ffeb-4e1d-9193-abe5d2bb6b95.jpg" width="260">](https://github.com/lauset)
 
-## 📄 许可证
-本项目采用 [MIT 许可证](LICENSE) 进行许可。
+## 📄 ライセンス
+
+このプロジェクトは [MIT ライセンス](LICENSE) の下で提供されています。

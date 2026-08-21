@@ -62,6 +62,7 @@ export default {
     language:          'Language',
     langEnglish:       'English',
     langChinese:       '中文',
+    langJapanese:      '日本語',
     theme:             'UI Theme',
     themeDefault:      'Default Theme',
     themeDefaultShort: 'Default',

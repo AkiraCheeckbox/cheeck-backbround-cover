@@ -101,21 +101,21 @@ function delay(ms: number): Promise<void> {
 /** Single source of truth for available pets (used by PickList + FileDom + Studio webview). */
 export const PET_LIST: PetEntry[] = [
     { value: 'akita',       label: 'Akita (Dog)', desc: '秋田犬',  folder: 'dog',         idle: 'akita_idle_8fps.gif',  walk: 'akita_walk_8fps.gif' },
-    { value: 'totoro',      label: 'Totoro',      desc: '龙猫',    folder: 'totoro',      idle: 'gray_idle_8fps.gif',   walk: 'gray_walk_8fps.gif' },
-    { value: 'fox',         label: 'Fox',         desc: '狐狸',    folder: 'fox',         idle: 'red_idle_8fps.gif',    walk: 'red_walk_8fps.gif' },
-    { value: 'pika',        label: 'Pika',        desc: '皮卡丘',  folder: 'pika',        idle: 'pika_still.gif',       walk: 'pika_run.gif' },
-    { value: 'deno2',       label: 'Deno2',       desc: '恐龙2',   folder: 'deno2',       idle: 'deno2_idle_8fps.gif',  walk: 'deno2_walk_8fps.gif' },
-    { value: 'clippy',      label: 'Clippy',      desc: '大眼夹',  folder: 'clippy',      idle: 'black_idle_8fps.gif',  walk: 'brown_walk_8fps.gif' },
-    { value: 'rubber-duck', label: 'Rubber Duck', desc: '小黄鸭',  folder: 'rubber-duck', idle: 'yellow_idle_8fps.gif', walk: 'yellow_walk_8fps.gif' },
-    { value: 'crab',        label: 'Crab',        desc: '螃蟹',    folder: 'crab',        idle: 'red_idle_8fps.gif',    walk: 'red_walk_8fps.gif' },
-    { value: 'zappy',       label: 'Zappy',       desc: '闪电',    folder: 'zappy',       idle: 'yellow_idle_8fps.gif', walk: 'yellow_walk_8fps.gif' },
-    { value: 'cockatiel',   label: 'Cockatiel',   desc: '玄凤鹦鹉',folder: 'cockatiel',   idle: 'brown_idle_8fps.gif',  walk: 'brown_walk_8fps.gif' },
+    { value: 'totoro',      label: 'Totoro',      desc: 'トトロ',    folder: 'totoro',      idle: 'gray_idle_8fps.gif',   walk: 'gray_walk_8fps.gif' },
+    { value: 'fox',         label: 'Fox',         desc: '狐',    folder: 'fox',         idle: 'red_idle_8fps.gif',    walk: 'red_walk_8fps.gif' },
+    { value: 'pika',        label: 'Pika',        desc: 'ピカチュウ',  folder: 'pika',        idle: 'pika_still.gif',       walk: 'pika_run.gif' },
+    { value: 'deno2',       label: 'Deno2',       desc: '恐竜2',   folder: 'deno2',       idle: 'deno2_idle_8fps.gif',  walk: 'deno2_walk_8fps.gif' },
+    { value: 'clippy',      label: 'Clippy',      desc: 'クリッピー',  folder: 'clippy',      idle: 'black_idle_8fps.gif',  walk: 'brown_walk_8fps.gif' },
+    { value: 'rubber-duck', label: 'Rubber Duck', desc: 'ラバーダック',  folder: 'rubber-duck', idle: 'yellow_idle_8fps.gif', walk: 'yellow_walk_8fps.gif' },
+    { value: 'crab',        label: 'Crab',        desc: 'カニ',    folder: 'crab',        idle: 'red_idle_8fps.gif',    walk: 'red_walk_8fps.gif' },
+    { value: 'zappy',       label: 'Zappy',       desc: '稲妻',    folder: 'zappy',       idle: 'yellow_idle_8fps.gif', walk: 'yellow_walk_8fps.gif' },
+    { value: 'cockatiel',   label: 'Cockatiel',   desc: 'オカメインコ',folder: 'cockatiel',   idle: 'brown_idle_8fps.gif',  walk: 'brown_walk_8fps.gif' },
     { value: 'snake',       label: 'Snake',       desc: '蛇',      folder: 'snake',       idle: 'green_idle_8fps.gif',  walk: 'green_walk_8fps.gif' },
-    { value: 'chicken',     label: 'Chicken',     desc: '鸡',      folder: 'chicken',     idle: 'white_idle_8fps.gif',  walk: 'white_walk_8fps.gif' },
-    { value: 'turtle',      label: 'Turtle',      desc: '乌龟',    folder: 'turtle',      idle: 'green_idle_8fps.gif',  walk: 'green_walk_8fps.gif' },
-    { value: 'panda',       label: 'Panda',       desc: '熊猫',    folder: 'panda',       idle: 'black_idle_8fps.gif',  walk: 'black_walk_8fps.gif' },
-    { value: 'snail',       label: 'Snail',       desc: '蜗牛',    folder: 'snail',       idle: 'brown_idle_8fps.gif',  walk: 'brown_walk_8fps.gif' },
-    { value: 'deno',        label: 'Deno',        desc: '恐龙',    folder: 'deno',        idle: 'green_idle_8fps.gif',  walk: 'green_walk_8fps.gif' },
+    { value: 'chicken',     label: 'Chicken',     desc: 'ニワトリ',      folder: 'chicken',     idle: 'white_idle_8fps.gif',  walk: 'white_walk_8fps.gif' },
+    { value: 'turtle',      label: 'Turtle',      desc: 'カメ',    folder: 'turtle',      idle: 'green_idle_8fps.gif',  walk: 'green_walk_8fps.gif' },
+    { value: 'panda',       label: 'Panda',       desc: 'パンダ',    folder: 'panda',       idle: 'black_idle_8fps.gif',  walk: 'black_walk_8fps.gif' },
+    { value: 'snail',       label: 'Snail',       desc: 'カタツムリ',    folder: 'snail',       idle: 'brown_idle_8fps.gif',  walk: 'brown_walk_8fps.gif' },
+    { value: 'deno',        label: 'Deno',        desc: '恐竜',    folder: 'deno',        idle: 'green_idle_8fps.gif',  walk: 'green_walk_8fps.gif' },
     { value: 'morph',       label: 'Morph',       desc: 'Morph',   folder: 'morph',       idle: 'purple_idle_8fps.gif', walk: 'purple_walk_8fps.gif' },
 ];
 
@@ -204,9 +204,9 @@ export class PickList {
     public static createItemLIst() {
         const config = workspace.getConfiguration('backgroundCover');
         const list = window.createQuickPick<ImgItem>();
-        list.placeholder = 'Please choose configuration! / 请选择相关配置！';
+        list.placeholder = 'Please choose configuration! / 設定を選択してください！';
         list.totalSteps = 2;
-        list.title = "背景图设置";
+        list.title = "背景画像の設定";
         
         PickList.itemList = new PickList(config, list);
         PickList.itemList.showMainMenu();
@@ -223,7 +223,7 @@ export class PickList {
                 // the Decoration tab gives the user explicit control. We just
                 // hint via the status bar so they know the change is staged.
                 window.setStatusBarMessage(
-                    '部分修改需重启窗口生效（装饰栏 → 重启生效） / Restart required for some changes.',
+                    '一部の変更はウィンドウの再起動後に反映されます（装飾タブ → 再起動） / Restart required for some changes.',
                     6000
                 );
             }
@@ -241,7 +241,7 @@ export class PickList {
         const nowBlenaStr = BlendHelper.autoBlendModel();
         if (blendStr == nowBlenaStr) { return false; }
 
-        window.showInformationMessage('主题模式发生变更，是否更新背景混合模式？', 'YES', 'NO').then(
+        window.showInformationMessage('テーマモードが変更されました。背景のブレンドモードを更新しますか？', 'YES', 'NO').then(
             (value) => {
                 if (value === 'YES') {
                     PickList.itemList = new PickList(config);
@@ -268,7 +268,7 @@ export class PickList {
     public static randomUpdateBackground() {
         const config = workspace.getConfiguration('backgroundCover');
         if (!config.randomImageFolder) {
-            window.showWarningMessage('Please add a directory! / 请添加目录！');
+            window.showWarningMessage('Please add a directory! / フォルダを追加してください！');
             return false;
         }
         PickList.itemList = new PickList(config);
@@ -339,7 +339,7 @@ export class PickList {
     public static startNest() {
         const config = workspace.getConfiguration('backgroundCover');
         const list = window.createQuickPick<ImgItem>();
-        list.placeholder = 'Please choose configuration! / 请选择相关配置！';
+        list.placeholder = 'Please choose configuration! / 設定を選択してください！';
         list.totalSteps = 2;
         PickList.itemList = new PickList(config, list);
         PickList.itemList.particleEffectSettings();
@@ -348,12 +348,12 @@ export class PickList {
     public static async updateImgPath(path: string) {
         const isUrl = (path.slice(0, 8).toLowerCase() === 'https://') || (path.slice(0, 7).toLowerCase() === 'http://');
         if (!isUrl) {
-            vsHelp.showInfo("非http/https格式图片，不支持配置！ / Non HTTP/HTTPS format image, configuration not supported!");
+            vsHelp.showInfo("http/https形式ではない画像は設定できません！ / Non HTTP/HTTPS format image, configuration not supported!");
             return false;
         }
         await window.withProgress({
             location: ProgressLocation.Notification,
-            title: "正在检测在线资源类型... / Detecting online resource type...",
+            title: "オンラインリソースの種類を確認中... / Detecting online resource type...",
             cancellable: false
         }, async () => {
             try {
@@ -363,7 +363,7 @@ export class PickList {
                 PickList.itemList.setImageFileType(2);
                 
                 if (images && images.length > 1) {
-                    window.showInformationMessage(`检测到在线文件夹，包含 ${images.length} 张图片！将随机选择一张作为背景。`);
+                    window.showInformationMessage(`オンラインフォルダーを検出しました。${images.length} 枚の画像が含まれています！背景用にランダムに1枚選びます。`);
                     const context = getContext();
                     context.globalState.update('backgroundCoverOnlineFolder', path);
                     context.globalState.update('backgroundCoverOnlineImageList', images);
@@ -371,12 +371,12 @@ export class PickList {
                     const randomImage = images[Math.floor(Math.random() * images.length)];
                     PickList.itemList.updateBackgound(randomImage);
                 } else {
-                    // window.showInformationMessage('检测到单张在线图片！');
+                    // window.showInformationMessage('1枚のオンライン画像を検出しました！');
                     const actualImage = (images && images.length > 0) ? images[0] : path;
                     PickList.itemList.updateBackgound(actualImage, true);
                 }
             } catch (error: any) {
-                window.showErrorMessage(`在线资源检测失败: ${error.message}`);
+                window.showErrorMessage(`オンラインリソースの確認に失敗しました: ${error.message}`);
                 const config = workspace.getConfiguration('backgroundCover');
                 PickList.itemList = new PickList(config);
                 PickList.itemList.setImageFileType(2);
@@ -387,11 +387,11 @@ export class PickList {
 
     public static gotoFilePath(path?: string) {
         if (path == undefined) {
-            return window.showWarningMessage('无效菜单');
+            return window.showWarningMessage('無効なメニューです');
         }
         const extensionUri = getContext().extensionUri ?? extensions.getExtension("manasxx.background-cover")?.extensionUri;
         if (!extensionUri) {
-            return window.showWarningMessage('未找到扩展资源路径 / Extension resource path not found');
+            return window.showWarningMessage('拡張機能のリソースパスが見つかりません / Extension resource path not found');
         }
 
         const segments = path.split(/[\\/]+/).filter(Boolean);
@@ -432,27 +432,27 @@ export class PickList {
         const items: ImgItem[] = [];
 
         items.push(
-            { label: 'Image Source / 图片来源', kind: QuickPickItemKind.Separator, imageType: 0 },
-            { label: '$(file-media) Select Pictures', detail: '选择一张背景图', imageType: ActionType.SelectPictures },
-            { label: '$(file-directory) Add Directory', detail: '添加图片目录', imageType: ActionType.AddDirectory },
-            { label: '$(pencil) Input : Path/Https', detail: '输入图片路径：本地/https/json(api)/html(a标签)/在线图库（帖子地址）', imageType: ActionType.InputPath },
-            { label: '$(ports-open-browser-icon) Online images', detail: '在线图库', imageType: ActionType.OnlineImages, path: "https://vs.20988.xyz" }
+            { label: 'Image Source / 画像ソース', kind: QuickPickItemKind.Separator, imageType: 0 },
+            { label: '$(file-media) Select Pictures', detail: '背景画像を1枚選択', imageType: ActionType.SelectPictures },
+            { label: '$(file-directory) Add Directory', detail: '画像フォルダを追加', imageType: ActionType.AddDirectory },
+            { label: '$(pencil) Input : Path/Https', detail: '画像のパスを入力：ローカル/https/json(api)/html(aタグ解析)/オンラインギャラリー（投稿URL）', imageType: ActionType.InputPath },
+            { label: '$(ports-open-browser-icon) Online images', detail: 'オンラインギャラリー', imageType: ActionType.OnlineImages, path: "https://vs.20988.xyz" }
         );
 
         const context = getContext();
         const onlineFolder = context.globalState.get('backgroundCoverOnlineFolder');
         if (onlineFolder) {
-            items.push({ label: '$(cloud-download) Refresh Online Folder', detail: '刷新在线文件夹图片列表', imageType: ActionType.RefreshOnlineFolder });
+            items.push({ label: '$(cloud-download) Refresh Online Folder', detail: 'オンラインフォルダーの画像リストを更新', imageType: ActionType.RefreshOnlineFolder });
         }
 
         items.push(
-            { label: 'Appearance / 外观设置', kind: QuickPickItemKind.Separator, imageType: 0 },
-            { label: '$(settings) Background Opacity', detail: '更新图片不透明度', imageType: ActionType.BackgroundOpacity },
-            { label: '$(settings) Background Blur', detail: '模糊度', imageType: ActionType.BackgroundBlur },
-            { label: '$(layout) Size Mode', detail: '尺寸适应模式 / size adaptive mode', imageType: ActionType.SizeModeMenu }
+            { label: 'Appearance / 外観設定', kind: QuickPickItemKind.Separator, imageType: 0 },
+            { label: '$(settings) Background Opacity', detail: '背景画像の透明度を設定', imageType: ActionType.BackgroundOpacity },
+            { label: '$(settings) Background Blur', detail: 'ぼかし', imageType: ActionType.BackgroundBlur },
+            { label: '$(layout) Size Mode', detail: 'サイズ調整モード / size adaptive mode', imageType: ActionType.SizeModeMenu }
         );
 
-        items.push({ label: 'Actions / 操作', kind: QuickPickItemKind.Separator, imageType: 0 });
+        items.push({ label: 'Actions / アクション', kind: QuickPickItemKind.Separator, imageType: 0 });
 
         const autoStatus = this.config.get('autoStatus');
         const autoInterval = this.config.get('autoInterval', 0);
@@ -462,25 +462,25 @@ export class PickList {
         
         items.push({ 
             label: `$(sync) Auto Random: ${autoDesc}`, 
-            detail: '设置自动更换间隔 (0表示关闭) / Set auto update interval (0 to disable)', 
+            detail: '自動更新間隔を設定（0でオフ） / Set auto update interval (0 to disable)', 
             imageType: ActionType.AutoRandomSettings 
         });
 
         items.push(
-            { label: '$(refresh) Refresh Background', detail: '刷新背景图 / Refresh background', imageType: ActionType.UpdateBackground },
-            { label: '$(eye-closed) Closing Background', detail: '关闭背景图', imageType: ActionType.CloseBackground }
+            { label: '$(refresh) Refresh Background', detail: '背景画像を更新 / Refresh background', imageType: ActionType.UpdateBackground },
+            { label: '$(eye-closed) Closing Background', detail: '背景画像を閉じる', imageType: ActionType.CloseBackground }
         );
 
         items.push(
-            { label: 'Effects / 特效', kind: QuickPickItemKind.Separator, imageType: 0 },
-            { label: '$(sparkle) Particle Effects🎉', detail: '粒子效果设置🎉', imageType: ActionType.ParticleSettings }
+            { label: 'Effects / エフェクト', kind: QuickPickItemKind.Separator, imageType: 0 },
+            { label: '$(sparkle) Particle Effects🎉', detail: '粒子エフェクトの設定🎉', imageType: ActionType.ParticleSettings }
         );
 
         items.push(
-            { label: 'About / 关于', kind: QuickPickItemKind.Separator, imageType: 0 },
-            { label: '$(github) Github', detail: 'Github信息', imageType: ActionType.MoreMenu },
-            { label: '$(heart) Support', detail: '请作者喝一杯咖啡吧~', imageType: ActionType.OpenFilePath, path: "//resources//support.jpg" },
-            { label: '$(organization) Wechat', detail: '微信群聊~', imageType: ActionType.OpenFilePath, path: "//resources//wx.jpg" }
+            { label: 'About / 概要', kind: QuickPickItemKind.Separator, imageType: 0 },
+            { label: '$(github) Github', detail: 'GitHub情報', imageType: ActionType.MoreMenu },
+            { label: '$(heart) Support', detail: '作者にコーヒーを一杯おごる~', imageType: ActionType.OpenFilePath, path: "//resources//support.jpg" },
+            { label: '$(organization) Wechat', detail: 'WeChatグループ~', imageType: ActionType.OpenFilePath, path: "//resources//wx.jpg" }
         );
 
         return items;
@@ -559,15 +559,15 @@ export class PickList {
     }
 
     private gotoPath(path?: string) {
-        if (path == undefined) { return window.showWarningMessage('无效菜单'); }
+        if (path == undefined) { return window.showWarningMessage('無効なメニューです'); }
         env.openExternal(Uri.parse(path));
     }
 
     public getMoreMenuItems(): ImgItem[] {
         return [
-            { label: '$(github) Repository', detail: '仓库地址', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover" },
-            { label: '$(issues) Issues', detail: '有疑问就来提问', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover/issues" },
-            { label: '$(star) Star', detail: '给作者点个Star吧', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover" }
+            { label: '$(github) Repository', detail: 'リポジトリのURL', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover" },
+            { label: '$(issues) Issues', detail: '疑問があればIssueで質問してください', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover/issues" },
+            { label: '$(star) Star', detail: '作者にStarを押してね', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover" }
         ];
     }
 
@@ -578,17 +578,17 @@ export class PickList {
 
     public getSizeModeMenuItems(): ImgItem[] {
         const modes = [
-            { label: 'cover (default)', value: 'cover', desc: '填充(默认)' },
-            { label: 'repeat', value: 'repeat', desc: '平铺' },
-            { label: 'contain', value: 'contain', desc: '拉伸' },
-            { label: 'center', value: 'center', desc: '居中' },
-            { label: 'not(center)', value: 'not_center', desc: '无适应(居中)' },
-            { label: 'not(right_bottom)', value: 'not_right_bottom', desc: '无适应(右下角)' },
-            { label: 'not(right_top)', value: 'not_right_top', desc: '无适应(右上角)' },
-            { label: 'not(left)', value: 'not_left', desc: '无适应(靠左)' },
-            { label: 'not(right)', value: 'not_right', desc: '无适应(靠右)' },
-            { label: 'not(top)', value: 'not_top', desc: '无适应(靠上)' },
-            { label: 'not(bottom)', value: 'not_bottom', desc: '无适应(靠下)' },
+            { label: 'cover (default)', value: 'cover', desc: 'カバー（デフォルト）' },
+            { label: 'repeat', value: 'repeat', desc: 'リピート' },
+            { label: 'contain', value: 'contain', desc: '全体表示' },
+            { label: 'center', value: 'center', desc: '中央寄せ' },
+            { label: 'not(center)', value: 'not_center', desc: '調整なし（中央）' },
+            { label: 'not(right_bottom)', value: 'not_right_bottom', desc: '調整なし（右下）' },
+            { label: 'not(right_top)', value: 'not_right_top', desc: '調整なし（右上）' },
+            { label: 'not(left)', value: 'not_left', desc: '調整なし（左寄せ）' },
+            { label: 'not(right)', value: 'not_right', desc: '調整なし（右寄せ）' },
+            { label: 'not(top)', value: 'not_top', desc: '調整なし（上寄せ）' },
+            { label: 'not(bottom)', value: 'not_bottom', desc: '調整なし（下寄せ）' },
         ];
 
         return modes.map(m => ({
@@ -609,12 +609,12 @@ export class PickList {
         return [
             {
                 label: enabled ? '$(circle-filled) Disable Particles' : '$(circle-outline) Enable Particles',
-                detail: enabled ? '关闭粒子效果' : '启用粒子效果',
+                detail: enabled ? '粒子エフェクトをOFF' : '粒子エフェクトをON',
                 imageType: ActionType.ToggleParticle
             },
-            { label: '$(settings) Particle Opacity', detail: '设置粒子透明度', imageType: ActionType.ParticleOpacity },
-            { label: '$(symbol-color) Select Color', detail: '选择粒子颜色', imageType: ActionType.ParticleColor },
-            { label: '$(multiple-windows) Particle Count', detail: '设置粒子数量', imageType: ActionType.ParticleCount },
+            { label: '$(settings) Particle Opacity', detail: '粒子の透明度を設定', imageType: ActionType.ParticleOpacity },
+            { label: '$(symbol-color) Select Color', detail: '粒子の色を選択', imageType: ActionType.ParticleColor },
+            { label: '$(multiple-windows) Particle Count', detail: '粒子の数を設定', imageType: ActionType.ParticleCount },
         ];
     }
 
@@ -630,7 +630,7 @@ export class PickList {
 
     public getColorSelectionItems(): ImgItem[] {
         const items: ImgItem[] = [];
-        items.push({ label: '$(pencil) Custom Color', detail: '输入自定义RGB颜色 (例如: 255,255,255)', imageType: ActionType.InputParticleColor });
+        items.push({ label: '$(pencil) Custom Color', detail: 'カスタムRGBカラーを入力（例: 255,255,255）', imageType: ActionType.InputParticleColor });
         
         const colorList = getColorList();
         for (const colorName of colorList) {
@@ -683,7 +683,7 @@ export class PickList {
                     return false;
                 }
                 if (persist) {
-                    window.showWarningMessage('在线文件夹访问失败，请检查网络连接！');
+                    window.showWarningMessage('オンラインフォルダーへのアクセスに失敗しました。ネット接続を確認してください！');
                 }
             }
         }
@@ -718,7 +718,7 @@ export class PickList {
                 await delay(500);
             }
             if (persist && i === 0) {
-                window.showInformationMessage('正在从在线文件夹获取图片列表...');
+                window.showInformationMessage('オンラインフォルダーの画像リストを取得中...');
             }
             try {
                 const images = await OnlineImageHelper.getOnlineImages(onlineFolder);
@@ -754,7 +754,7 @@ export class PickList {
                 }
             }
         }
-        window.setStatusBarMessage('自动换图失败，将在下个间隔再试 / Auto background update failed, will retry next interval.', 5000);
+        window.setStatusBarMessage('自動背景更新に失敗しました。次の間隔で再試行します / Auto background update failed, will retry next interval.', 5000);
         return false;
     }
 
@@ -771,32 +771,32 @@ export class PickList {
         const context = getContext();
         const onlineFolder = context.globalState.get<string>('backgroundCoverOnlineFolder');
         if (!onlineFolder) {
-            window.showWarningMessage('未找到在线文件夹配置！');
+            window.showWarningMessage('オンラインフォルダーの設定が見つかりません！');
             return;
         }
         let success = false;
         try {
-            window.showInformationMessage('正在刷新在线文件夹图片列表...');
+            window.showInformationMessage('オンラインフォルダーの画像リストを更新中...');
             const images = await OnlineImageHelper.getOnlineImages(onlineFolder);
             if (images && images.length > 0) {
                 const normalizedFolder = this.normalizePathKey(onlineFolder);
                 if (images.length === 1 && this.normalizePathKey(images[0]) === normalizedFolder) {
-                    window.showInformationMessage('检测到链接仅返回单张图片，已切换为单图模式。');
+                    window.showInformationMessage('リンクから1枚の画像のみ返されました。シングル画像モードに切り替えました。');
                     this.updateBackgound(images[0], true);
                     success = true;
                 } else {
                     context.globalState.update('backgroundCoverOnlineImageList', images);
-                    window.showInformationMessage(`刷新成功！发现 ${images.length} 张图片。`);
+                    window.showInformationMessage(`更新しました！${images.length} 枚の画像が見つかりました。`);
                     const randomImage = images[Math.floor(Math.random() * images.length)];
                     this.updateBackgound(randomImage);
                     success = true;
                 }
             } else {
-                window.showWarningMessage('未在该URL找到图片！');
+                window.showWarningMessage('このURLから画像が見つかりませんでした！');
                 this.clearOnlineFolder(true);
             }
         } catch (error: any) {
-            window.showErrorMessage(`刷新失败: ${error.message}`);
+            window.showErrorMessage(`更新に失敗しました: ${error.message}`);
             this.clearOnlineFolder(true);
         }
         if (success) { this.quickPick.hide(); }
@@ -840,7 +840,7 @@ export class PickList {
     private showImageSelectionList(folderPath?: string) {
         let items: ImgItem[] = [{
             label: '$(diff-added) Manual selection',
-            detail: '选择一张背景图',
+            detail: '背景画像を1枚選択',
             imageType: ActionType.ManualSelection
         }];
 
@@ -851,7 +851,7 @@ export class PickList {
                 const randomFile = files[Math.floor(Math.random() * files.length)];
                 items.push({
                     label: '$(light-bulb) Random pictures',
-                    detail: '随机自动选择       ctrl+shift+F7',
+                    detail: 'ランダム自動選択       ctrl+shift+F7',
                     imageType: ActionType.UpdateBackground,
                     path: path.join(randomPath, randomFile)
                 });
@@ -1017,11 +1017,11 @@ export class PickList {
      */
     private showOpacitySlider() {
         const presets: { value: number; label: string }[] = [
-            { value: 0,    label: '0%   (Off / 关闭)' },
+            { value: 0,    label: '0%   (Off / オフ)' },
             { value: 0.05, label: '5%' },
             { value: 0.1,  label: '10%' },
             { value: 0.15, label: '15%' },
-            { value: 0.2,  label: '20%  (Default / 默认)' },
+            { value: 0.2,  label: '20%  (Default / デフォルト)' },
             { value: 0.25, label: '25%' },
             { value: 0.3,  label: '30%' },
             { value: 0.4,  label: '40%' },
@@ -1034,7 +1034,7 @@ export class PickList {
             'opacity',
             this.opacity,
             presets,
-            'Background Opacity / 背景透明度（←→ 预览，Enter 确认，ESC 还原）'
+            'Background Opacity / 背景透明度（←→ プレビュー，Enter 確定，ESC 元に戻す）'
         );
     }
 
@@ -1043,7 +1043,7 @@ export class PickList {
      */
     private showBlurSlider() {
         const presets: { value: number; label: string }[] = [
-            { value: 0,   label: '0px   (Off / 关闭)' },
+            { value: 0,   label: '0px   (Off / オフ)' },
             { value: 2,   label: '2px' },
             { value: 5,   label: '5px' },
             { value: 10,  label: '10px' },
@@ -1057,7 +1057,7 @@ export class PickList {
             'blur',
             this.blur,
             presets,
-            'Background Blur / 背景模糊度（←→ 预览，Enter 确认，ESC 还原）'
+            'Background Blur / 背景のぼかし（←→ プレビュー，Enter 確定，ESC 元に戻す）'
         );
     }
 
@@ -1083,7 +1083,7 @@ export class PickList {
 
         const items: ImgItem[] = presets.map((p) => ({
             label: p.label,
-            description: p.value === originalValue ? '$(check) current / 当前' : '',
+            description: p.value === originalValue ? '$(check) current / 現在' : '',
             detail: this.renderSliderBar(p.value, presets[presets.length - 1].value),
             imageType: 0,
             path: String(p.value),
@@ -1163,31 +1163,31 @@ export class PickList {
         switch (type) {
             case InputType.Path:
                 placeString = 'Please enter the image path to support local and HTTPS';
-                promptString = '输入图片路径：支持本地/https/json(api接口)/html(解析a标签)/在线图库（帖子地址）';
+                promptString = '画像のパスを入力：ローカル/https/json(api)/html(aタグ解析)/オンラインギャラリー（投稿URL）';
                 break;
             case InputType.Opacity:
                 placeString = 'Opacity ranges：0.00 - 1,current:(' + this.opacity + ')';
-                promptString = '设置图片不透明度：0 - 0.8,当前值：' + this.opacity;
+                promptString = '画像の透明度を設定：0 - 0.8、現在の値：' + this.opacity;
                 break;
             case InputType.Blur:
                 placeString = 'Set image blur: 0-100,current:(' + this.blur + ')';
-                promptString = '设置图片模糊度：0 - 100,当前值：' + this.blur;
+                promptString = '画像のぼかしを設定：0 - 100、現在の値：' + this.blur;
                 break;
             case InputType.AutoRandomSettings:
                 placeString = 'Auto update current:(' + this.config.get('autoInterval', 0) + ')';
-                promptString = '设置自动更换间隔(秒)，0表示关闭自动定时更换 / Set interval (0 to disable)';
+                promptString = '自動更新間隔を設定（秒）。0で自動更新をオフ / Set interval (0 to disable)';
                 break;
             case InputType.ParticleOpacity:
                 placeString = 'Particle opacity (0.1 - 1),current:(' + context.globalState.get("backgroundCoverParticleOpacity") + ')';
-                promptString = '粒子透明度 (0.1 - 1),当前值：' + context.globalState.get("backgroundCoverParticleOpacity");
+                promptString = '粒子の透明度 (0.1 - 1)、現在の値：' + context.globalState.get("backgroundCoverParticleOpacity");
                 break;
             case InputType.ParticleColor:
                 placeString = 'Particle color (e.g.:255,255,255),current:(' + context.globalState.get("backgroundCoverParticleColor") + ')';
-                promptString = '粒子颜色 (例如:255,255,255),当前值：' + context.globalState.get("backgroundCoverParticleColor");
+                promptString = '粒子の色（例: 255,255,255）、現在の値：' + context.globalState.get("backgroundCoverParticleColor");
                 break;
             case InputType.ParticleCount:
                 placeString = 'Particle count (1 - 200),current:(' + context.globalState.get("backgroundCoverParticleCount") + ')';
-                promptString = '粒子数量 (1 - 200),当前值：' + context.globalState.get("backgroundCoverParticleCount");
+                promptString = '粒子の数 (1 - 200)、現在の値：' + context.globalState.get("backgroundCoverParticleCount");
                 break;
         }
 
@@ -1200,7 +1200,7 @@ export class PickList {
 
         let value = await window.showInputBox(option);
         if (!value) {
-            window.showWarningMessage('Please enter configuration parameters / 请输入配置参数！');
+            window.showWarningMessage('Please enter configuration parameters / 設定値を入力してください！');
             return false;
         }
 
@@ -1210,7 +1210,7 @@ export class PickList {
             const fsStatus = fs.existsSync(path.resolve(value));
             const isUrl = (value.slice(0, 8).toLowerCase() === 'https://') || (value.slice(0, 7).toLowerCase() === 'http://');
             if (!fsStatus && !isUrl) {
-                window.showWarningMessage('No access to the file or the file does not exist! / 无权限访问文件或文件不存在！');
+                window.showWarningMessage('No access to the file or the file does not exist! / ファイルにアクセスできないか、ファイルが存在しません！');
                 return false;
             }
             if (!isUrl) { shouldClearOnlineCache = true; }
@@ -1219,7 +1219,7 @@ export class PickList {
                 let shouldReturn = false;
                 await window.withProgress({
                     location: ProgressLocation.Notification,
-                    title: "正在检测在线资源类型... / Detecting online resource type...",
+                    title: "オンラインリソースの種類を確認中... / Detecting online resource type...",
                     cancellable: false
                 }, async () => {
                     try {
@@ -1241,7 +1241,7 @@ export class PickList {
                         }
                     } catch (err: any) {
                         console.error('[background-cover] OnlineImageHelper error:', err && err.message ? err.message : err);
-                        window.showWarningMessage('在线资源检测失败，按单张图片处理 / Online detection failed, treating as single image');
+                        window.showWarningMessage('オンラインリソースの確認に失敗しました。1枚の画像として処理します / Online detection failed, treating as single image');
                         shouldClearOnlineCache = true;
                     }
                 });
@@ -1270,18 +1270,18 @@ export class PickList {
         } else if (type === InputType.ParticleOpacity) {
             const particleOpacity = parseFloat(value);
             if (particleOpacity < 0 || particleOpacity > 1 || isNaN(particleOpacity)) {
-                window.showWarningMessage('粒子透明度范围：0 - 1！');
+                window.showWarningMessage('粒子の透明度範囲：0 - 1！');
                 return false;
             }
         } else if (type === InputType.ParticleColor) {
             if (!value.includes(',')) {
-                window.showWarningMessage('颜色格式无效，请使用RGB(255,255,255)格式！');
+                window.showWarningMessage('カラーフォーマットが無効です。RGB(255,255,255)形式を使用してください！');
                 return false;
             }
         } else if (type === InputType.ParticleCount) {
             const particleCount = parseInt(value);
             if (particleCount < 1 || particleCount > 200 || isNaN(particleCount)) {
-                window.showWarningMessage('粒子数量范围：1 - 200！');
+                window.showWarningMessage('粒子の数の範囲：1 - 200！');
                 return false;
             }
         }
@@ -1310,7 +1310,7 @@ export class PickList {
                 const hasOnlineFolder = context.globalState.get('backgroundCoverOnlineFolder');
                 const hasSingleSource = context.globalState.get('backgroundCoverSingleImageSource');
                 if (!hasRandomFolder && !hasOnlineFolder && !hasSingleSource) {
-                    window.showWarningMessage('Please add a directory first! / 请先添加目录！');
+                    window.showWarningMessage('Please add a directory first! / 先にフォルダを追加してください！');
                     return false;
                 }
                 await this.setConfigValue('autoInterval', interval, false);
@@ -1324,7 +1324,7 @@ export class PickList {
     }
 
     private async setSizeModel(value?: string) {
-        if (!value) { return vsHelp.showInfo('No parameter value was obtained / 未获取到参数值'); }
+        if (!value) { return vsHelp.showInfo('No parameter value was obtained / パラメーター値を取得できませんでした'); }
         await this.setConfigValue('sizeModel', value, true);
     }
 
@@ -1339,7 +1339,7 @@ export class PickList {
         options: UpdateBackgroundOptions = {}
     ) {
         if (!path) { path = resolveCurrentImagePath(this.config.get<string>('imagePath') || ''); }
-        if (!path) { return vsHelp.showInfo('Unfetched Picture Path / 未获取到图片路径'); }
+        if (!path) { return vsHelp.showInfo('Unfetched Picture Path / 画像のパスを取得できませんでした'); }
 
         // Large local-file pre-check: warn user before applying anything > 5MB so
         // they don't get blindsided by a multi-second freeze on manual switch.
@@ -1375,10 +1375,10 @@ export class PickList {
             if (sizeMB <= 5) { return true; }
             const sizeLabel = `${sizeMB.toFixed(1)}MB`;
             const choice = await window.showWarningMessage(
-                `图片体积较大 (${sizeLabel})，应用时可能会出现短暂卡顿。是否继续？ / Large image (${sizeLabel}) may cause a brief stutter. Continue?`,
-                'Continue / 继续', 'Cancel / 取消'
+                `画像が大きい（${sizeLabel}）ため、適用時に一瞬重くなる可能性があります。続行しますか？ / Large image (${sizeLabel}) may cause a brief stutter. Continue?`,
+                'Continue / 続ける', 'Cancel / キャンセル'
             );
-            return choice === 'Continue / 继续';
+            return choice === 'Continue / 続ける';
         } catch (e) {
             console.warn('[BackgroundCover] confirmLargeLocalImage failed:', e);
             return true;
@@ -1477,7 +1477,7 @@ export class PickList {
         }
         await this.config.update('autoStatus', false, ConfigurationTarget.Global);
         this.config = workspace.getConfiguration('backgroundCover');
-        window.showInformationMessage('检测到单张图片，已自动关闭自动更新功能。 / Detected single image source, auto update disabled.');
+        window.showInformationMessage('1枚の画像が検出されたため、自動更新を自動的にオフにしました。 / Detected single image source, auto update disabled.');
     }
 
     private isSingleImagePath(value: string): boolean {
@@ -1555,7 +1555,7 @@ export class PickList {
                     setTimeout(() => {
                         triggerMsg.dispose();
                         if (didChangeAssets) {
-                            window.setStatusBarMessage('Background updated successfully! / 背景更新成功！', 5000);
+                            window.setStatusBarMessage('Background updated successfully! / 背景の更新に成功しました！', 5000);
                         }
                     }, 1000);
 
@@ -1563,17 +1563,17 @@ export class PickList {
                 }
 
                 if (this.quickPick) {
-                    this.quickPick.placeholder = 'Reloading takes effect? / 重新加载生效？';
+                    this.quickPick.placeholder = 'Reloading takes effect? / 再読み込みで反映されますか？';
                     this.quickPick.items = [
-                        { label: '$(check) YES', detail: '立即重新加载窗口生效', imageType: ActionType.ReloadWindow },
-                        { label: '$(x) NO', detail: '稍后手动重启', imageType: ActionType.CloseMenu }
+                        { label: '$(check) YES', detail: '今すぐウィンドウを再読み込みして適用', imageType: ActionType.ReloadWindow },
+                        { label: '$(x) NO', detail: '後で手動で再起動', imageType: ActionType.CloseMenu }
                     ];
                     this.quickPick.ignoreFocusOut = true;
                     this.quickPick.show();
                 } else {
                     if (this.imageFileType === 2) {
                         const value = await window.showInformationMessage(
-                            `"${this.imgPath}" | Reloading takes effect? / 重新加载生效？`,
+                            `"${this.imgPath}" | Reloading takes effect? / 再読み込みで反映されますか？`,
                             'YES', 'NO'
                         );
                         if (value === 'YES') {
@@ -1581,7 +1581,7 @@ export class PickList {
                         }
                     }
                     if (this.randUpdate) {
-                        window.showInformationMessage(`背景将在1秒后自动更新！ / The background will be automatically updated in 1 second!`);
+                        window.showInformationMessage(`1秒後に背景が自動更新されます！ / The background will be automatically updated in 1 second!`);
                         await new Promise((resolve) => setTimeout(resolve, 1000));
                         await commands.executeCommand('workbench.action.reloadWindow');
                     }
@@ -1591,7 +1591,7 @@ export class PickList {
             if (this.silentApply) {
                 throw error;
             }
-            await window.showErrorMessage(`更新失败: ${error.message}`);
+            await window.showErrorMessage(`更新に失敗しました: ${error.message}`);
         }
         return result && (dom.requiresReload || uninstall);
     }

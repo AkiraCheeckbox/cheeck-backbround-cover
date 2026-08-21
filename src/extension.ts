@@ -32,7 +32,7 @@ export function activate(context: ExtensionContext) {
 	let backImgBtn = window.createStatusBarItem(StatusBarAlignment.Right, -999);
 	backImgBtn.text = '$(file-media)';
 	backImgBtn.command = 'extension.backgroundCover.showMenu';
-	backImgBtn.tooltip = 'Switch background image / 切换背景图';
+	backImgBtn.tooltip = '背景画像を切り替え';
 	backImgBtn.show();
 	context.subscriptions.push(backImgBtn);
 
@@ -40,7 +40,7 @@ export function activate(context: ExtensionContext) {
 	let particleBtn = window.createStatusBarItem(StatusBarAlignment.Right, -999);
 	particleBtn.text = '$(sparkle)';
 	particleBtn.command = 'extension.backgroundCover.nest';
-	particleBtn.tooltip = 'Particle effect / 粒子效果';
+	particleBtn.tooltip = 'パーティクル効果';
 	particleBtn.show();
 	context.subscriptions.push(particleBtn);
 
@@ -53,11 +53,11 @@ export function activate(context: ExtensionContext) {
 			if (hasImage && !fs.existsSync(CUSTOM_JS_FILE_PATH)) {
 				const extensionVersion = context.extension?.packageJSON?.version || '';
 				window.showInformationMessage(
-					`BackgroundCover ${extensionVersion || ''}：检测到核心文件尚未初始化，需要重新应用背景补丁。是否立即执行？ / BackgroundCover ${extensionVersion || ''}: Core files are not initialized. Apply the background patch now?`,
-					'Apply / 应用',
-					'Later / 稍后'
+					`BackgroundCover ${extensionVersion || ''}：コアファイルが初期化されていません。背景パッチを再適用しますか？`,
+					'適用',
+					'後で'
 				).then(async result => {
-					if (result === 'Apply / 应用') {
+					if (result === '適用') {
 						const requiresReload = await PickList.applyCurrentBackground();
 						if (requiresReload) {
 							await promptRestartWindow();
@@ -204,12 +204,12 @@ export function activate(context: ExtensionContext) {
 	
 	if(openVersion != version){
 	context.globalState.update('ext_version',version);
-	vsHelp.showInfoSupport(`🎉 BackgroundCover 已更新至 ${version}
+	vsHelp.showInfoSupport(`🎉 BackgroundCover ${version} に更新されました。
 🚀 更新内容：
-    1.  透明度/模糊度按窗口独立：每个工作区可各自保存并显示不同的透明度与模糊度数值，在一个窗口调透明度/模糊度不再把其他窗口的数值刷成同一个。
-    2.  独立模式下透明度/模糊度不再回写全局 settings.json，切回「全部窗口共用」后恢复全局共享。
+    1.  透明度 / ぼかしをウィンドウごとに独立：各ワークスペースで異なる透明度とぼかし値を保存・表示できます。あるウィンドウで調整しても、他のウィンドウの値は変わりません。
+    2.  独立モードでは透明度 / ぼかしを settings.json に書き戻さなくなりました。「全ウィンドウで共有」に戻すと、再びグローバルな共有動作に戻ります。
 
-❤️ 觉得好用吗？支持一下在线图库运营吧！`);
+❤️ 気に入っていただけたら、オンラインギャラリーの運営を支援してください！`);
 	}
 }
 
@@ -228,12 +228,12 @@ async function checkVSCodeVersionChanged(context: ExtensionContext): Promise<boo
 	if (lastVSCodeVersion && lastVSCodeVersion !== vscodeVersion) {
 		// 弹出提示框确认是否更新背景
 		const value = await window.showInformationMessage(
-			`检测到 Devin/VS Code 已从 ${lastVSCodeVersion} 更新到 ${vscodeVersion}，背景补丁可能已被重置。是否重新应用并重载窗口？ / Devin/VS Code was updated from ${lastVSCodeVersion} to ${vscodeVersion}. Reapply the background patch and reload the window?`,
-			'Apply and Reload / 应用并重载',
-			'Later / 稍后'
+			`Devin/VS Code が ${lastVSCodeVersion} から ${vscodeVersion} に更新されたため、背景パッチがリセットされている可能性があります。再適用してウィンドウを再読み込みしますか？`,
+			'適用して再読み込み',
+			'後で'
 		);
 
-		if (value === 'Apply and Reload / 应用并重载') {
+		if (value === '適用して再読み込み') {
 			// Update the stored version BEFORE any operation that might reload/close the window
 			await context.globalState.update('vscode_version', vscodeVersion);
 
@@ -246,18 +246,18 @@ async function checkVSCodeVersionChanged(context: ExtensionContext): Promise<boo
 				// process and still pulls from the stale cache. A full restart is required
 				// to clear the main process cache and recompile the patched file.
 				const restartChoice = await window.showInformationMessage(
-					'背景补丁已应用，但需要完全关闭并重新打开 Devin/VS Code 才能生效（软重载不会清除编译缓存）。是否现在退出？ / Background patch applied. You must fully quit and restart Devin/VS Code for it to take effect (soft reload won\'t clear the compilation cache). Quit now?',
-					'Quit / 退出',
-					'Later / 稍后'
+					'背景パッチを適用しました。完全に Devin/VS Code を終了して開き直さないと反映されません（ソフト再読み込みではコンパイルキャッシュがクリアされません）。今すぐ終了しますか？',
+					'終了',
+					'後で'
 				);
-				if (restartChoice === 'Quit / 退出') {
+				if (restartChoice === '終了') {
 					await commands.executeCommand('workbench.action.quit');
 				}
 			} else {
-				window.setStatusBarMessage('Background already applied. / 背景已应用。', 5000);
+				window.setStatusBarMessage('背景を適用しました。', 5000);
 			}
 		} else {
-			// User chose "Later / 稍后" — still update the version so we don't prompt again
+			// ユーザーが「後で」を選択した場合も、バージョンを更新して再度通知しないようにする
 			await context.globalState.update('vscode_version', vscodeVersion);
 		}
 
@@ -274,11 +274,11 @@ async function checkVSCodeVersionChanged(context: ExtensionContext): Promise<boo
 
 async function promptRestartWindow(): Promise<void> {
 	const value = await window.showInformationMessage(
-		'背景补丁已应用，但需要完全关闭并重新打开 Devin/VS Code 才能生效（软重载不会清除编译缓存）。是否现在退出？ / Background patch applied. You must fully quit and restart Devin/VS Code for it to take effect (soft reload won\'t clear the compilation cache). Quit now?',
-		'Quit / 退出',
-		'Later / 稍后'
+		'背景パッチを適用しました。完全に Devin/VS Code を終了して開き直さないと反映されません（ソフト再読み込みではコンパイルキャッシュがクリアされません）。今すぐ終了しますか？',
+		'終了',
+		'後で'
 	);
-	if (value === 'Quit / 退出') {
+	if (value === '終了') {
 		await commands.executeCommand('workbench.action.quit');
 	}
 }

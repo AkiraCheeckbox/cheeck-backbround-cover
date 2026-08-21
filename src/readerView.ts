@@ -85,7 +85,7 @@ export default class ReaderViewProvider implements WebviewViewProvider {
                       let context = getContext();
                       await context.globalState.update('backgroundCoverOnlineDefault', message.data.url);
                       await PickList.updateImgPath(message.data.url);
-                      window.showInformationMessage("配置帖子图库成功，记得开启自动更换功能噢！/ Set successfully, remember to turn on the auto-change function!");
+                      window.showInformationMessage('オンラインギャラリーの設定が完了しました。自動切り替え機能をオンにするのを忘れないでください。');
                       break;
                 }
             } finally {

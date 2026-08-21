@@ -8,23 +8,23 @@ import { PickList } from './PickList';
 
 const vsHelp = {
     /**
-     * 展示信息提示框
-     * 
-     * @param {string} content 提示内容
-     * @returns {Thenable<string>} 
+     * 情報メッセージを表示
+     *
+     * @param {string} content 表示内容
+     * @returns {Thenable<string>}
      */
     showInfo(content: string): Thenable<string | undefined> {
         return window.showInformationMessage(content);
     },
 
     /**
-     * 提示信息并重启
-     * 
-     * @param {any} content 提示内容
-     * @returns {Thenable<void>} 
+     * 情報を表示し、再起動する
+     *
+     * @param {any} content 表示内容
+     * @returns {Thenable<void>}
      */
     showInfoRestart(content: any): Thenable<void> {
-        return window.showInformationMessage(content, { title: "Reload" })
+        return window.showInformationMessage(content, { title: "再読み込み" })
             .then(function (item) {
                 if (!item) { return; }
                 commands.executeCommand('workbench.action.reloadWindow');
@@ -40,17 +40,17 @@ const vsHelp = {
     },
 
     showInfoSupport(content: any): Thenable<void> {
-        return window.showInformationMessage(content, { modal: true }, { title: "❤️赞助" }, { title: "详情" }, { title: "加入群聊" })
+        return window.showInformationMessage(content, { modal: true }, { title: "❤️ 支援" }, { title: "詳細" }, { title: "グループに参加" })
             .then(function (item) {
                 if (!item) { return; }
-                if (item.title === '详情') {
+                if (item.title === '詳細') {
                     env.openExternal( Uri.parse( "https://vs.20988.xyz/d/66-ai-xin-juan-zeng/3" ) )
-                }else if(item.title === '加入群聊'){
+                }else if(item.title === 'グループに参加'){
                     PickList.gotoFilePath('//resources//wx.jpg');
                 }else{
                     PickList.gotoFilePath('//resources//support.jpg');
                 }
-                
+
             });
     },
 
@@ -60,7 +60,7 @@ const vsHelp = {
             if (!item) { return; }
             commands.executeCommand('workbench.view.extension.backgroundCover-explorer');
         });
-        
+
     }
 }
 

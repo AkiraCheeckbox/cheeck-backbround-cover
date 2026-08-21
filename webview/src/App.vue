@@ -28,10 +28,13 @@
                 <el-dropdown trigger="click" :popper-class="dropdownPopperClass" @command="onLangChange">
                     <el-button text size="small" :title="t('language')">
                         <el-icon><Place /></el-icon>
-                        <span class="lang-label">{{ locale === 'zh' ? '中' : 'EN' }}</span>
+                        <span class="lang-label">{{ locale === 'ja' ? 'JP' : locale === 'zh' ? '中' : 'EN' }}</span>
                     </el-button>
                     <template #dropdown>
                         <el-dropdown-menu>
+                            <el-dropdown-item command="ja" :disabled="locale === 'ja'">
+                                {{ t('langJapanese') }}
+                            </el-dropdown-item>
                             <el-dropdown-item command="en" :disabled="locale === 'en'">
                                 {{ t('langEnglish') }}
                             </el-dropdown-item>

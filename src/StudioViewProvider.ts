@@ -237,7 +237,7 @@ export class StudioViewProvider implements WebviewViewProvider {
                     } else if (msg.command === 'set_home') {
                         await this.ctx.globalState.update('backgroundCoverOnlineDefault', data.url);
                         await PickList.updateImgPath(data.url);
-                        window.showInformationMessage('配置帖子图库成功，记得开启自动更换功能噢！/ Set successfully, remember to turn on the auto-change function!');
+                        window.showInformationMessage('オンラインギャラリーの設定が完了しました。自動切り替え機能をオンにするのを忘れないでください。');
                     }
                 } finally {
                     this.galleryBusy = false;

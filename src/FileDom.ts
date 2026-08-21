@@ -202,7 +202,7 @@ function quoteWinPath(filePath: string): string {
 
 async function unlockDir(dirPath: string): Promise<void> {
     window.setStatusBarMessage(
-        '正在开放背景文件目录写入权限，请在弹出的授权窗口中确认一次。 / Granting write access to the background folder. Please confirm the permission prompt once.',
+        '背景ファイルディレクトリの書き込み権限を開放中です。表示された権限ダイアログで承認してください。',
         15000
     );
     const systemType = os.type();
@@ -620,7 +620,7 @@ export class FileDom {
         const isExist = await fse.pathExists(this.filePath);
         if (!isExist) {
             if (!this.silent) {
-                await window.showErrorMessage(`文件不存在，提醒开发者修复吧！`);
+                await window.showErrorMessage(`ファイルが存在しません。開発者に報告してください。`);
             }
             return false;
         }
@@ -647,7 +647,7 @@ export class FileDom {
         const bakExist = await fse.pathExists(BAK_FILE_PATH);
         if (!bakExist) {
             this.bakStatus = true;
-            window.setStatusBarMessage(`首次使用正在获取权限及备份文件，处理中... / First use is getting permission and backing up files, processing...`, 10000);
+            window.setStatusBarMessage(`初回使用時に権限を取得し、ファイルをバックアップしています...`, 10000);
         }
     }
 
@@ -691,7 +691,7 @@ export class FileDom {
                 if (this.silent) {
                     throw new BackgroundPatchError(String(e));
                 }
-                window.showErrorMessage('Failed to write background assets: ' + e);
+                window.showErrorMessage('背景アセットの書き込みに失敗しました: ' + e);
                 return false;
             }
 
@@ -801,24 +801,24 @@ export class FileDom {
         }
 
         const intro: Record<Kind, string> = {
-            permission: '权限不足：写入 VSCode 核心文件失败。请尝试以管理员身份重新打开 VSCode，或关闭其他正在写入该文件的进程。 / Permission denied while patching VSCode core file.',
-            locked:     '文件被占用：另一个 VSCode 实例可能正在写入相同文件。请关闭其他窗口后重试。 / The workbench file is locked by another process.',
-            missing:    '未找到 VSCode 核心文件：可能在你升级 / 修复 VSCode 后路径已变化。 / Required VSCode core file is missing.',
-            unknown:    '安装补丁失败 / Failed to install background patch.'
+            permission: '権限不足：VSCode コアファイルへの書き込みに失敗しました。管理者権限で VSCode を開き直すか、他のプロセスを終了してから再試行してください。',
+            locked:     'ファイルが使用中：別の VSCode インスタンスが同じファイルを書き込み中の可能性があります。他のウィンドウを閉じてから再試行してください。',
+            missing:    'VSCode コアファイルが見つかりません：アップグレードまたは修復後にパスが変更された可能性があります。',
+            unknown:    '背景パッチのインストールに失敗しました。'
         };
 
-        const buttons: string[] = ['Retry / 重试'];
+        const buttons: string[] = ['再試行'];
         if (kind === 'permission' && this.systemType === SystemType.WINDOWS) {
-            buttons.push('Reopen as Admin / 以管理员身份重开');
+            buttons.push('管理者として再起動');
         }
-        buttons.push('Open Log / 查看日志');
+        buttons.push('ログを表示');
 
         const detail = `${intro[kind]}\n\n[${kind.toUpperCase()}] ${rawMsg}`;
         console.error('[FileDom] applyPatch error:', error);
 
         const choice = await window.showErrorMessage(detail, ...buttons);
         if (!choice) { return; }
-        if (choice === 'Retry / 重试') {
+        if (choice === '再試行') {
             // Re-attempt without recursion blowing the stack; small delay so any
             // transient lock has a chance to clear. Restart image preprocessing
             // so a previous failed download is not reused.
@@ -829,15 +829,15 @@ export class FileDom {
             setTimeout(() => { void this.applyPatch(); }, 300);
             return;
         }
-        if (choice === 'Reopen as Admin / 以管理员身份重开') {
+        if (choice === '管理者として再起動') {
             await window.showInformationMessage(
-                '请手动关闭当前 VSCode 窗口，然后右键 VSCode 图标 → "以管理员身份运行"。 / Close VSCode, then right-click its icon and choose "Run as administrator".',
+                '現在の VSCode ウィンドウを手動で閉じ、VSCode アイコンを右クリックして「管理者として実行」を選択してください。',
                 { modal: true },
                 'OK'
             );
             return;
         }
-        if (choice === 'Open Log / 查看日志') {
+        if (choice === 'ログを表示') {
             try {
                 await commands.executeCommand('workbench.action.toggleDevTools');
             } catch (e) {
@@ -985,7 +985,7 @@ export class FileDom {
 
             return true;
         } catch (error) {
-            await window.showErrorMessage(`卸载失败: ${error}`);
+            await window.showErrorMessage(`アンインストールに失敗しました: ${error}`);
             return false;
         }
     }
@@ -998,9 +998,9 @@ export class FileDom {
             return true;
         } catch (error) {
             if (this.silent) {
-                throw new BackgroundPatchError(`清除背景失败: ${error}`);
+                throw new BackgroundPatchError(`背景のクリアに失敗しました: ${error}`);
             }
-            await window.showErrorMessage(`清除背景失败: ${error}`);
+            await window.showErrorMessage(`背景のクリアに失敗しました: ${error}`);
             return false;
         }
     }

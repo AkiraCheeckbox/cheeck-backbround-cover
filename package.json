@@ -1,8 +1,8 @@
 {
     "name": "background-cover",
-    "displayName": "Background Cover (Devin / VS Code:)",
-    "description": "Add a picture you like to cover the entire Devin or VS Code: background (Hot Reload Supported). / Devin/VS Code: 背景图热更新",
-    "version": "3.6.2",
+    "displayName": "背景カバー (Devin / VS Code:)",
+    "description": "好きな画像や動画を Devin / VS Code: の背景全体に敷き詰める拡張機能（ホットリロード対応）。",
+    "version": "3.6.3",
     "publisher": "AkiraCheeckbox",
     "engines": {
         "vscode": "^1.38.0"
@@ -34,19 +34,19 @@
         "commands": [
             {
                 "command": "extension.backgroundCover.start",
-                "title": "backgroundCover - start"
+                "title": "backgroundCover - 開始"
             },
             {
                 "command": "extension.backgroundCover.refresh",
-                "title": "backgroundCover - refresh"
+                "title": "backgroundCover - 更新"
             },
             {
                 "command": "extension.backgroundCover.nest",
-                "title": "backgroundCover - nest"
+                "title": "backgroundCover - パーティクル"
             },
             {
                 "command": "backgroundCover.refreshEntry",
-                "title": "刷新",
+                "title": "更新",
                 "icon": {
                     "light": "resources/light/refresh.svg",
                     "dark": "resources/dark/refresh.svg"
@@ -54,7 +54,7 @@
             },
             {
                 "command": "backgroundCover.home",
-                "title": "首页",
+                "title": "ホーム",
                 "icon": {
                     "light": "resources/light/home.svg",
                     "dark": "resources/dark/home.svg"
@@ -62,12 +62,12 @@
             },
             {
                 "command": "backgroundCover.switchMode",
-                "title": "配置",
+                "title": "設定",
                 "icon": "$(settings-gear)"
             },
             {
                 "command": "backgroundCover.support",
-                "title": "赞助",
+                "title": "作者を支援",
                 "icon": "$(heart)"
             }
         ],
@@ -78,46 +78,46 @@
             }
         ],
         "configuration": {
-            "title": "background-cover config",
+            "title": "background-cover 設定",
             "properties": {
                 "backgroundCover.opacity": {
                     "type": "number",
                     "maximum": 0.8,
                     "minimum": 0,
                     "default": 0.2,
-                    "description": "Background opacity (0 - 0.8) / 背景透明度(0 - 0.8)"
+                    "description": "背景の透明度（0 - 0.8）"
                 },
                 "backgroundCover.blur": {
                     "type": "number",
                     "maximum": 100,
                     "minimum": 0,
                     "default": 0,
-                    "description": "Background blur (0 - 100) / 背景模糊(0 - 100)"
+                    "description": "背景のぼかし（0 - 100）"
                 },
                 "backgroundCover.imagePath": {
                     "type": "string",
                     "default": "",
-                    "description": "Background image path / 背景图片路径"
+                    "description": "背景画像のパス"
                 },
                 "backgroundCover.perWindowBackground": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Let each window keep its own background image. Turn this off to share one background across all windows (legacy behavior). / 每个窗口使用各自的背景图；关闭后所有窗口共用同一张背景图（旧版行为）"
+                    "description": "各ウィンドウで独自の背景画像を保持します。オフにすると全ウィンドウで同じ背景を共有します（従来の動作）。"
                 },
                 "backgroundCover.randomImageFolder": {
                     "type": "string",
                     "default": "",
-                    "description": "Background image's folder path for random / 图片目录"
+                    "description": "ランダム背景用の画像フォルダのパス"
                 },
                 "backgroundCover.autoStatus": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Automatically change background each time you start / 每次启动时随机自动更换背景"
+                    "description": "起動時に自動でランダムに背景を変更します"
                 },
                 "backgroundCover.autoInterval": {
                     "type": "number",
                     "default": 10,
-                    "description": "Automatically change background interval in seconds / 自动更换背景的时间间隔（秒）"
+                    "description": "背景を自動変更する間隔（秒）"
                 },
                 "backgroundCover.sizeModel": {
                     "type": "string",
@@ -135,7 +135,7 @@
                         "not_bottom"
                     ],
                     "default": "cover",
-                    "description": "Background image size adaptive mode / 图片尺寸适应模式"
+                    "description": "背景画像のサイズ調整モード"
                 },
                 "backgroundCover.blendModel": {
                     "type": "string",
@@ -145,12 +145,12 @@
                         "lighten"
                     ],
                     "default": "cover",
-                    "description": "Background image blend mode / 图片文字混合模式，对应主题模式"
+                    "description": "背景画像のブレンドモード"
                 },
                 "backgroundCover.defaultOnlinePage": {
                     "type": "string",
                     "default": "https://vs.20988.xyz/d/24-vscodebei-jing-tu-tu-ku",
-                    "description": "Online images default page / 在线图库默认页面"
+                    "description": "オンライン画像ギャラリーのデフォルトページ"
                 }
             }
         },
@@ -168,18 +168,18 @@
                 {
                     "id": "backgroundCover.studio",
                     "type": "webview",
-                    "name": "Studio",
+                    "name": "スタジオ",
                     "when": "backgroundCover.mode == 'menu'"
                 },
                 {
                     "id": "backgroundCover.menu",
-                    "name": "Menu",
+                    "name": "メニュー",
                     "when": "backgroundCover.mode == 'legacyMenu'"
                 },
                 {
                     "id": "backgroundCover.readerView",
                     "type": "webview",
-                    "name": "Online Gallery",
+                    "name": "オンラインギャラリー",
                     "when": "backgroundCover.mode != 'menu' && backgroundCover.mode != 'legacyMenu'"
                 }
             ]
