@@ -6,8 +6,8 @@
 
 <p align="center">
     <b>好きな画像や動画を VS Code / Devin の背景全体に敷き詰めます。パーティクルアニメーション、ホットリロード、動画背景、自動切り替えなど、豊富な機能を搭載しています。</b><br>
-    <a href="https://github.com/AkiraCheeckbox/vscode-background-cover">
-        <img src="https://img.shields.io/github/stars/AkiraCheeckbox/vscode-background-cover.svg?style=social" alt="stars">
+    <a href="https://github.com/AkiraCheeckbox/cheeck-backbround-cover">
+        <img src="https://img.shields.io/github/stars/AkiraCheeckbox/cheeck-backbround-cover.svg?style=social" alt="stars">
     </a>
 </p>
 
@@ -16,7 +16,7 @@
 ![Background Cover Studio preview](resources/readme-preview.jpg)
 
 
-## 🚀 3.6.3 主な更新点
+## 🚀 3.6.4 主な更新点
 
 1. **🎨 透明度 / ぼかしをウィンドウごとに独立**：各ワークスペースで異なる透明度とぼかし値を保存・表示できます。あるウィンドウで調整しても、他のウィンドウの値は変わりません（webview スライダーとツリービューには、現在のウィンドウで実際に有効な値が表示されます）。
 2. **🧹 設定がすっきり**：独立モードでは透明度 / ぼかしをグローバルな settings.json に書き戻さず、複数ウィンドウ間で値が混ざるのを防ぎます。「全ウィンドウで共有」に戻すと、再びグローバルな共有動作に戻ります。
@@ -113,7 +113,14 @@ A: 拡張機能が自動でパスワードを要求します。または手動�
 
 ## 📝 更新履歴
 
-[完全なログ](https://github.com/vscode-extension/vscode-background-cover/blob/master/CHANGELOG.md)
+[完全なログ](https://github.com/AkiraCheeckbox/cheeck-backbround-cover/blob/master/CHANGELOG.md)
+
+#### ver 3.6.4 (2026/08/21)
+
+1. リポジトリ・拡張機能名を `cheeck-backbround-cover` に変更しました。
+2. 次のランダム背景へのホットキー `Ctrl+Shift+F8` を追加しました。
+3. 設定のエクスポート / インポートコマンドを追加しました。
+4. ライト / ダーク / ハイコントラストテーマに応じて背景を自動切り替える機能を追加しました。
 
 #### ver 3.6.3 (2026/08/21)
 

@@ -13,10 +13,12 @@ import {
 	ExtensionContext,
 	StatusBarAlignment,
 	version as vscodeVersion,
-	workspace, // 获取 VSCode 版本
+	workspace,
+	ColorThemeKind,
 } from 'vscode';
 import * as fs from 'fs';
 import { PickList } from './PickList';
+import { exportSettings, importSettings } from './settingsBackup';
 import vsHelp from './vsHelp';
 import ReaderViewProvider from './readerView';
 import { setContext } from './global';
@@ -92,6 +94,7 @@ export function activate(context: ExtensionContext) {
 	}));
 
 	let randomCommand = commands.registerCommand('extension.backgroundCover.refresh', () => { PickList.randomUpdateBackground(); });
+	let nextRandomCommand = commands.registerCommand('extension.backgroundCover.nextRandom', () => { PickList.randomUpdateBackground(); });
 	let startCommand = commands.registerCommand('extension.backgroundCover.start', () => { 
 		commands.executeCommand('setContext', 'backgroundCover.mode', 'menu');
 		commands.executeCommand('workbench.view.extension.backgroundCover-explorer');
@@ -103,6 +106,9 @@ export function activate(context: ExtensionContext) {
 	});
 	context.subscriptions.push(startCommand);
 	context.subscriptions.push(randomCommand);
+	context.subscriptions.push(nextRandomCommand);
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.exportSettings', () => exportSettings(context)));
+	context.subscriptions.push(commands.registerCommand('extension.backgroundCover.importSettings', () => importSettings(context)));
 	context.subscriptions.push(particleEffectCommand);
 	context.subscriptions.push(showMenuCommand);
 
@@ -194,7 +200,11 @@ export function activate(context: ExtensionContext) {
 	// 监听主题变化
 	window.onDidChangeActiveColorTheme((event) => {
         PickList.autoUpdateBlendModel();
+        void applyThemeBackground();
     });
+
+	// 起動時にもテーマに応じた背景を適用
+	void applyThemeBackground();
 
 
 
@@ -280,6 +290,26 @@ async function promptRestartWindow(): Promise<void> {
 	);
 	if (value === '終了') {
 		await commands.executeCommand('workbench.action.quit');
+	}
+}
+
+async function applyThemeBackground(): Promise<void> {
+	const config = workspace.getConfiguration('backgroundCover');
+	let imagePath: string | undefined;
+	switch (window.activeColorTheme.kind) {
+		case ColorThemeKind.Light:
+			imagePath = config.get<string>('lightImagePath') || undefined;
+			break;
+		case ColorThemeKind.Dark:
+			imagePath = config.get<string>('darkImagePath') || undefined;
+			break;
+		case ColorThemeKind.HighContrast:
+		case ColorThemeKind.HighContrastLight:
+			imagePath = config.get<string>('highContrastImagePath') || undefined;
+			break;
+	}
+	if (imagePath) {
+		await PickList.updateImgPath(imagePath);
 	}
 }
 

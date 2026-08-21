@@ -1,8 +1,8 @@
 {
-    "name": "background-cover",
-    "displayName": "背景カバー (Devin / VS Code:)",
+    "name": "cheeck-backbround-cover",
+    "displayName": "Cheeck Backbround Cover",
     "description": "好きな画像や動画を Devin / VS Code: の背景全体に敷き詰める拡張機能（ホットリロード対応）。",
-    "version": "3.6.3",
+    "version": "3.6.4",
     "publisher": "AkiraCheeckbox",
     "engines": {
         "vscode": "^1.38.0"
@@ -45,6 +45,18 @@
                 "title": "backgroundCover - パーティクル"
             },
             {
+                "command": "extension.backgroundCover.nextRandom",
+                "title": "backgroundCover - 次のランダム背景"
+            },
+            {
+                "command": "extension.backgroundCover.exportSettings",
+                "title": "backgroundCover - 設定をエクスポート"
+            },
+            {
+                "command": "extension.backgroundCover.importSettings",
+                "title": "backgroundCover - 設定をインポート"
+            },
+            {
                 "command": "backgroundCover.refreshEntry",
                 "title": "更新",
                 "icon": {
@@ -75,6 +87,10 @@
             {
                 "command": "extension.backgroundCover.refresh",
                 "key": "ctrl+shift+f7"
+            },
+            {
+                "command": "extension.backgroundCover.nextRandom",
+                "key": "ctrl+shift+f8"
             }
         ],
         "configuration": {
@@ -147,6 +163,21 @@
                     "default": "cover",
                     "description": "背景画像のブレンドモード"
                 },
+                "backgroundCover.lightImagePath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "ライトテーマ時の背景画像パス"
+                },
+                "backgroundCover.darkImagePath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "ダークテーマ時の背景画像パス"
+                },
+                "backgroundCover.highContrastImagePath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "ハイコントラストテーマ時の背景画像パス"
+                },
                 "backgroundCover.defaultOnlinePage": {
                     "type": "string",
                     "default": "https://vs.20988.xyz/d/24-vscodebei-jing-tu-tu-ku",
@@ -200,13 +231,13 @@
         }
     },
     "bugs": {
-        "url": "https://github.com/AkiraCheeckbox/vscode-background-cover/issues"
+        "url": "https://github.com/AkiraCheeckbox/cheeck-backbround-cover/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/AkiraCheeckbox/vscode-background-cover.git"
+        "url": "https://github.com/AkiraCheeckbox/cheeck-backbround-cover.git"
     },
-    "homepage": "https://github.com/AkiraCheeckbox/vscode-background-cover/blob/master/README.md",
+    "homepage": "https://github.com/AkiraCheeckbox/cheeck-backbround-cover/blob/master/README.md",
     "scripts": {
         "vscode:prepublish": "npm run build:webview && npm run compile",
         "vscode:uninstall": "node ./out/uninstall",

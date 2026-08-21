@@ -389,7 +389,7 @@ export class PickList {
         if (path == undefined) {
             return window.showWarningMessage('無効なメニューです');
         }
-        const extensionUri = getContext().extensionUri ?? extensions.getExtension("manasxx.background-cover")?.extensionUri;
+        const extensionUri = getContext().extensionUri ?? extensions.getExtension("akiracheeckbox.cheeck-backbround-cover")?.extensionUri;
         if (!extensionUri) {
             return window.showWarningMessage('拡張機能のリソースパスが見つかりません / Extension resource path not found');
         }
@@ -565,9 +565,9 @@ export class PickList {
 
     public getMoreMenuItems(): ImgItem[] {
         return [
-            { label: '$(github) Repository', detail: 'リポジトリのURL', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover" },
-            { label: '$(issues) Issues', detail: '疑問があればIssueで質問してください', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover/issues" },
-            { label: '$(star) Star', detail: '作者にStarを押してね', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AShujiao/vscode-background-cover" }
+            { label: '$(github) リポジトリ', detail: 'リポジトリのURL', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AkiraCheeckbox/cheeck-backbround-cover" },
+            { label: '$(issues) Issues', detail: '疑問があればIssueで質問してください', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AkiraCheeckbox/cheeck-backbround-cover/issues" },
+            { label: '$(star) Star', detail: '作者にStarを押してね', imageType: ActionType.OpenExternalUrl, path: "https://github.com/AkiraCheeckbox/cheeck-backbround-cover" }
         ];
     }
 
