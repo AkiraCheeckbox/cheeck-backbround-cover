@@ -1,185 +1,185 @@
 
 <h1 align="center">
     <img src="https://user-images.githubusercontent.com/14969576/61449520-b55d9900-a987-11e9-9dc9-e81fa416688c.png" alt="logo" width="180"><br>
-    VS Code / Devin 背景カバー
+    Cheeck Backbround Cover
 </h1>
 
 <p align="center">
-    <b>好きな画像や動画を VS Code / Devin の背景全体に敷き詰めます。パーティクルアニメーション、ホットリロード、動画背景、自動切り替えなど、豊富な機能を搭載しています。</b><br>
+    <b>Spread your favorite images and videos across the entire VS Code / Devin background. Features include particle animations, hot reload, video backgrounds, automatic switching, and more.</b><br>
     <a href="https://github.com/AkiraCheeckbox/cheeck-backbround-cover">
         <img src="https://img.shields.io/github/stars/AkiraCheeckbox/cheeck-backbround-cover.svg?style=social" alt="stars">
     </a>
 </p>
 
-> このリポジトリは <a href="https://github.com/AShujiao/vscode-background-cover">AShujiao/vscode-background-cover</a> を fork し、Devin デスクトップでの動作と日本語化、個人用の調整を行ったものです。
+> This repository is a fork of <a href="https://github.com/AShujiao/vscode-background-cover">AShujiao/vscode-background-cover</a>, adjusted for Devin desktop operation, Japanese localization, and personal tweaks.
 
 ![Background Cover Studio preview](resources/readme-preview.jpg)
 
 
-## 🚀 3.6.5 主な更新点
+## 🚀 3.6.5 Main Updates
 
-1. **🎨 透明度 / ぼかしをウィンドウごとに独立**：各ワークスペースで異なる透明度とぼかし値を保存・表示できます。あるウィンドウで調整しても、他のウィンドウの値は変わりません（webview スライダーとツリービューには、現在のウィンドウで実際に有効な値が表示されます）。
-2. **🧹 設定がすっきり**：独立モードでは透明度 / ぼかしをグローバルな settings.json に書き戻さず、複数ウィンドウ間で値が混ざるのを防ぎます。「全ウィンドウで共有」に戻すと、再びグローバルな共有動作に戻ります。
-3. **🇯🇵 日本語化**：パネル、通知、設定、README を日本語にしました。
+1. **🎨 Per-window independent opacity / blur**: Each workspace can save and display different opacity and blur values. Adjusting in one window does not affect the other windows (the webview sliders and tree view show the values currently active in the active window).
+2. **🧹 Cleaner settings**: In independent mode, opacity / blur are not written back to the global settings.json, preventing values from mixing across multiple windows. Switching back to "Share across all windows" restores global shared behavior.
+3. **🇯🇵 Japanese localization**: Panel, notifications, settings, and README are now in Japanese.
 
 ---
 
-## 🌟 機能一覧
+## 🌟 Features
 
-- **Studio 設定パネル**：ホーム、ローカルギャラリー、オンラインギャラリー、詳細設定、装飾を一元管理。
-- **UI テーマ**：デフォルトテーマとオーバーウォッチテーマをサポート。パネル右上で切り替え可能。
-- **トップペット**：かわいいペットを複数内蔵。`~/.codex/pets` / `CODEX_HOME/pets` の Codex ペットとの同期にも対応し、吹き出しメッセージも自由に設定できます。
-- **画像 / 動画背景**：ローカル画像、ネット画像、ローカル動画、オンライン動画に対応。
-- **ホットリロード**：背景を切り替えても、VS Code: を再起動せずに即座に反映。
-- **マルチウィンドウ独立背景**：各ウィンドウで異なる背景を表示することも、全ウィンドウで共有することも可能。
-- **AgentView 対応**：VS Code: AgentView / Agent Sessions の独立ウィンドウにも背景を表示。
-- **自動切り替え**：複数の画像 / 動画を指定した間隔で自動的に切り替え。
-- **パーティクルアニメーション**：マウスに追随するパーティクルエフェクトを搭載。数、透明度、プリセットカラー、カスタムカラーが設定可能。
-- **ローカルギャラリー**：フォルダ内画像のプレビュー、最近使用履歴、ページング、背景へのドラッグ設定に対応。
-- **オンライン入口**：上部から URL を入力、オンラインギャラリーの更新、コミュニティギャラリーをブラウザで開く。
-- **ビジュアル設定**：左側の Studio パネルからワンタッチで設定。
-- **透明度 / ぼかし / サイズ調整**：背景の透明度、ぼかし、サイズ調整をカスタマイズ。マルチウィンドウモードではワークスペースごとに独立設定可能。
-- **高度な解析**：JSON API、静的 HTML、ギャラリーの投稿など、さまざまな画像ソースをサポート。
-- **オンラインギャラリー**：コミュニティ壁紙の閲覧、アップロード、ワンタッチ適用に対応。
-- **クロスプラットフォーム**：Windows、macOS、Linux、Code-Server に対応。
-- **自動権限処理**：Windows では書き込み権限を自動取得するため、手動操作が不要。
+- **Studio settings panel**: Home, local gallery, online gallery, advanced settings, and decorations all in one place.
+- **UI themes**: Supports the default theme and the Overwatch theme. Switch from the upper-right corner of the panel.
+- **Top pet**: Multiple cute pets are built in. Also syncs with Codex pets in `~/.codex/pets` / `CODEX_HOME/pets`, and speech bubble messages can be freely customized.
+- **Image / video backgrounds**: Supports local images, network images, local videos, and online videos.
+- **Hot reload**: Switch the background instantly without restarting VS Code.
+- **Multi-window independent backgrounds**: Display different backgrounds in each window, or share the same background across all windows.
+- **AgentView support**: Display the background in independent VS Code AgentView / Agent Sessions windows.
+- **Auto-switch**: Automatically switch between multiple images / videos at a specified interval.
+- **Particle animation**: Mouse-following particle effects are included. Count, opacity, preset colors, and custom colors can be configured.
+- **Local gallery**: Preview images in a folder, view recently used images, paginate, and drag to set as background.
+- **Online portal**: Enter a URL from the top, update the online gallery, and open the community gallery in your browser.
+- **Visual settings**: One-touch settings from the Studio panel on the left.
+- **Opacity / blur / size adjustment**: Customize background opacity, blur, and size. In multi-window mode, each workspace can be configured independently.
+- **Advanced parsing**: Supports a variety of image sources, including JSON APIs, static HTML, and gallery posts.
+- **Online gallery**: Browse, upload, and apply community wallpapers with one touch.
+- **Cross-platform**: Supports Windows, macOS, Linux, and Code-Server.
+- **Auto permission handling**: Automatically acquires write permissions on Windows, so no manual operation is needed.
 
 
-## ⚠️ 注意事項
+## ⚠️ Notes
 
-> この拡張機能は VS Code: の内部ファイルを変更して効果を実現しています。
+> This extension modifies VS Code's internal files to achieve its effects.
 
-1. **初回使用 / 3.x へのアップグレード**：権限（Hook）を再取得し、VS Code: を一度再起動する必要があります。
-2. **初回インストール / 更新**：「インストールが破損しています」という表示が出た場合は、【今後表示しない】をクリックしてください。
-3. **背景の重ね表示 / 表示崩れ**：アップグレード後に背景が重なる場合は、VS Code: を再起動してください。
-4. **復元方法**：VS Code: が開かなくなった場合は手動で復元してください：
-   - パス：`Microsoft VS Code\resources\app\out\vs\workbench\`
-   - `workbench.desktop.main.js.bak` を `workbench.desktop.main.js` にリネーム
+1. **First use / upgrade to 3.x**: Reacquire permissions (Hook) and restart VS Code once.
+2. **First install / update**: If the message "The installation is corrupt" appears, click **Don't show again**.
+3. **Background overlap / display corruption**: If the background overlaps after an upgrade, restart VS Code.
+4. **Recovery method**: If VS Code no longer opens, restore it manually:
+   - Path: `Microsoft VS Code\resources\app\out\vs\workbench\`
+   - Rename `workbench.desktop.main.js.bak` to `workbench.desktop.main.js`
 
 ![](https://user-images.githubusercontent.com/14969576/47090529-b1b0b080-d255-11e8-8812-d541cb1c3852.png)
 
 
 
 
-## 🖼️ 効果サンプル
+## 🖼️ Effect Samples
 
-[オンラインギャラリー / その他の壁紙](https://vs.20988.xyz/d/24-vscodebei-jing-tu-tu-ku)
+[Online Gallery / Other Wallpapers](https://vs.20988.xyz/d/24-vscodebei-jing-tu-tu-ku)
 
-![](https://github.com/user-attachments/assets/7bd68f60-55af-42e8-980a-99bf1b3e078d)
+![](https://github.com/user-attachments/assets/7bd68f60-55af-42e8-980a-99bf1e3e078d)
 ![](https://github.com/user-attachments/assets/047617e6-7e09-441e-b9df-ae6a2bb940d9)
 ![](https://github.com/user-attachments/assets/3c0a214f-7563-43b9-9579-314647808ccf)
 
 
-## ⚙️ 設定方法
+## ⚙️ Setup
 
-> **推奨**：左側アクティビティバーの `backgroundCover` アイコンをクリックして、ビジュアル設定パネルを開きます。すべての設定が一目でわかります。
+> **Recommended**: Click the `backgroundCover` icon in the left activity bar to open the visual settings panel. All settings are clear at a glance.
 
-- **画像 / 動画ソース**：ローカルファイル、フォルダ、ネットワークリンクをサポート。
-- **外観**：透明度、ぼかし、サイズ調整モードを変更。
-- **オンライン**：URL を入力、オンラインギャラリーを閲覧、コミュニティギャラリーを更新。
-- **装飾**：パーティクルエフェクト、トップペット、Codex ペット同期、ペットの吹き出しメッセージを設定。
-- **詳細**：自動切り替え、ブレンドモード、キャッシュディレクトリを設定。
+- **Image / video source**: Supports local files, folders, and network links.
+- **Appearance**: Change opacity, blur, and size adjustment mode.
+- **Online**: Enter a URL, browse the online gallery, and update the community gallery.
+- **Decorations**: Configure particle effects, top pet, Codex pet sync, and pet speech bubble messages.
+- **Advanced**: Set auto-switch, blend mode, and cache directory.
 
-*コマンドパレット `Ctrl + Shift + P` -> `backgroundCover - 開始` からも設定を開けます。*
-
-
-## 📝 ショートカットと使い方
-
-- **背景切り替え**：下部ステータスバーのボタンをクリック
-- **開く / 設定**：`Ctrl + Shift + P` -> `backgroundCover - 開始`
-- **再適用**：VS Code: 更新後に背景が消えた場合は、設定から再適用してください
-
-> **3.x へ初めてアップグレードする際は、権限を再取得して VS Code: を再起動する必要があります！**
+*You can also open settings from the Command Palette `Ctrl + Shift + P` -> `backgroundCover - Start`.*
 
 
+## 📝 Shortcuts and Usage
+
+- **Switch background**: Click the button in the bottom status bar
+- **Open / Settings**: `Ctrl + Shift + P` -> `backgroundCover - Start`
+- **Reapply**: If the background disappears after a VS Code update, reapply it from the settings
+
+> **When you first upgrade to 3.x, you must reacquire permissions and restart VS Code!**
 
 
-## 🗑️ アンインストール手順
-
-1. 拡張機能を無効化 / アンインストール
-2. VS Code: を再起動
-3. 拡張機能が自動で背景の残骸をクリーンアップします
 
 
-## ❓ よくある質問
+## 🗑️ Uninstall Steps
 
-**Q: インストール後に反応がない？**
-A: 管理者権限があるか確認してください（Windows の場合は VS Code: アイコンを右クリックして「管理者として実行」）。
+1. Disable / uninstall the extension
+2. Restart VS Code
+3. The extension automatically cleans up any remaining background artifacts
 
-**Q: Mac で権限を付与するには？**
-A: 拡張機能が自動でパスワードを要求します。または手動で `sudo chown` してください。
+
+## ❓ FAQ
+
+**Q: No response after installation?**
+A: Check whether you have administrator privileges (on Windows, right-click the VS Code icon and select Run as administrator).
+
+**Q: How do I grant permissions on Mac?**
+A: The extension automatically asks for your password. Or run `sudo chown` manually.
 
 ---
 
-## 📝 更新履歴
+## 📝 Changelog
 
-[完全なログ](https://github.com/AkiraCheeckbox/cheeck-backbround-cover/blob/master/CHANGELOG.md)
+[Full log](https://github.com/AkiraCheeckbox/cheeck-backbround-cover/blob/master/CHANGELOG.md)
 
 #### ver 3.6.5 (2026/08/21)
 
-1. お気に入り背景プリセット（保存 / 適用 / 削除）を追加しました。
-2. オンライン画像ランダム取得（Unsplash / Pexels / Picsum 対応）を追加しました。
-3. 動画背景の音量・再生速度制御を追加しました。
-4. 背景画像切り替えのクロスフェード効果を追加しました。
-5. 背景上に時計オーバーレイを追加しました。
-6. タグによる背景画像検索を追加しました。
-7. Devin Agent ウィンドウ用の背景プリセットを追加しました。
+1. Added favorite background presets (save / apply / delete).
+2. Added random online image fetch (Unsplash / Pexels / Picsum support).
+3. Added video background volume and playback speed controls.
+4. Added crossfade effect for background image switching.
+5. Added clock overlay on the background.
+6. Added tag-based background image search.
+7. Added background presets for Devin Agent windows.
 
 #### ver 3.6.4 (2026/08/21)
 
-1. リポジトリ・拡張機能名を `cheeck-backbround-cover` に変更しました。
-2. 次のランダム背景へのホットキー `Ctrl+Shift+F8` を追加しました。
-3. 設定のエクスポート / インポートコマンドを追加しました。
-4. ライト / ダーク / ハイコントラストテーマに応じて背景を自動切り替える機能を追加しました。
+1. Changed repository and extension name to `cheeck-backbround-cover`.
+2. Added hotkey `Ctrl+Shift+F8` for the next random background.
+3. Added export / import settings commands.
+4. Added automatic background switching according to light / dark / high-contrast themes.
 
 #### ver 3.6.3 (2026/08/21)
 
-1. 拡張機能全体の UI、通知、webview、コマンド、設定、README を日本語化しました。
-2. Devin デスクトップでの動作を確認・調整しました。
+1. Japaneseized the entire extension UI, notifications, webview, commands, settings, and README.
+2. Verified and adjusted operation on Devin desktop.
 
 #### ver 3.6.2 (2026/08/21)
 
-1. 日本語 UI・通知・README に対応しました。
-2. Devin デスクトップでの動作を確認・調整しました。
+1. Added Japanese UI, notification, and README support.
+2. Verified and adjusted operation on Devin desktop.
 
 #### ver 3.6.1 (2026/08/18)
 
-1. マルチウィンドウ独立背景モードで、透明度 / ぼかしがグローバル設定で共有されていた問題を修正。各ウィンドウ（ワークスペース）で異なる透明度とぼかし値を保存・表示できるようになりました（webview スライダー、ツリービュー、設定パネルには現在のウィンドウで実際に有効な値が表示されます）。
+1. Fixed an issue where opacity / blur were still shared via global settings in multi-window independent background mode. Each window (workspace) can now save and display different opacity and blur values (the webview sliders, tree view, and settings panel show the values currently active in the active window).
 
 #### ver 3.6.0 (2026/08/14)
 
-1. マルチウィンドウ独立背景を追加。各ウィンドウで異なる背景を表示可能（詳細設定で全ウィンドウ共有に切り替え可能）（[#226](https://github.com/AShujiao/vscode-background-cover/pull/226) by @Aierlanta）。
-2. マルチウィンドウ権限体験を最適化。新規ウィンドウで UAC 権限ダイアログが繰り返し表示されないように。
-3. 自動背景切り替えの耐障害性を向上。ネットワーク失敗時に静かに再試行または別画像に切り替え、ダイアログで中断しないように（[#225](https://github.com/AShujiao/vscode-background-cover/pull/225) by @Aierlanta）。
-    @Aierlanta さん、ご協力ありがとうございます！
+1. Added multi-window independent backgrounds. Each window can display a different background (can be switched back to shared across all windows in advanced settings) ([#226](https://github.com/AShujiao/vscode-background-cover/pull/226) by @Aierlanta).
+2. Optimized multi-window permission experience. UAC permission dialogs no longer appear repeatedly for new windows.
+3. Improved auto background switching fault tolerance. On network failure, it silently retries or switches to another image without interrupting with a dialog ([#225](https://github.com/AShujiao/vscode-background-cover/pull/225) by @Aierlanta).
+    Thank you @Aierlanta for your help!
 
 #### ver 3.5.3 (2026/07/06)
 
-1. VS Code: 更新後に背景が反映されず、手動で閉じて開き直さないと有効にならなかった問題を修正（最新の VS Code: ではコア UI のコンパイルキャッシュをメインプロセスが保持しており、ソフト再読み込みではクリアできないため、完全な終了と再起動を案内します）。
-2. 新しい VS Code: のセキュリティポリシー（Trusted Types）下で、パッチ適用後に背景 / ペット / パーティクルが一切表示されなくなっていた問題を修正（注入方式を「安定したブートストラップ + 外部動的スクリプト」に再構築）。
-3. Cursor Agent Window（Glass ウィンドウ）の背景表示に対応。追加 bundle 機構を活用して自動的にパッチの適用とアンインストール時の復元を行うように（[#214](https://github.com/AShujiao/vscode-background-cover/pull/214) by @Aierlanta）。
-4. 背景画像のみを切り替える際に装飾ランタイムを再構築しないように最適化。ペット位置とパーティクル状態が保持されます。
-5. 装飾設定パネルの「再起動で反映」ボタンを上部に移動し、表示文案を最適化。
+1. Fixed an issue where the background was not applied after a VS Code update and required manually closing and reopening to take effect (in the latest VS Code, the main process holds the core UI compile cache, which cannot be cleared by a soft reload, so the user is now guided to fully quit and restart).
+2. Fixed an issue where, under newer VS Code security policy (Trusted Types), the background / pets / particles were not displayed at all after applying the patch (injection method was rebuilt to a "stable bootstrap + external dynamic script").
+3. Added support for background display in the Cursor Agent Window (Glass window). Reuses the additional bundle mechanism to automatically apply the patch and restore on uninstall ([#214](https://github.com/AShujiao/vscode-background-cover/pull/214) by @Aierlanta).
+4. Optimized so the decoration runtime is not rebuilt when only the background image is switched, preserving pet positions and particle state.
+5. Moved the "Apply on restart" button in the decoration settings panel to the top and optimized the prompt text.
 
 #### ver 3.5.2 (2026/06/04)
 
-1. 新しい VS Code:（例: 1.123.0）で Node が `util.isObject` を削除したことにより、初回初期化時に `Failed to write CSS file: TypeError: Node.util.isObject is not a function` とエラーになっていた問題を修正（`sudo-prompt` を公式メンテナンスの `@vscode/sudo-prompt` に置き換え）。
+1. Fixed an issue where, in newer VS Code (e.g. 1.123.0), `util.isObject` was removed by Node, causing the error `Failed to write CSS file: TypeError: Node.util.isObject is not a function` on first initialization (replaced the unmaintained `sudo-prompt` with the officially maintained `@vscode/sudo-prompt`).
 
 #### ver 3.5.1 (2026/05/25)
 
-1. 自動ランダム背景切り替えで大きなローカル画像に遭遇した際に確認ダイアログが表示され、切り替えが止まっていた問題を修正。
-2. VS Code: 更新後の背景再適用時の表示文案に、3.0 バージョン情報が残っていた問題を修正。
-3. VS Code: 更新後に「背景を再適用」をクリックしても、ウィンドウの再読み込みが正しくトリガーされなかった問題を修正。
+1. Fixed an issue where automatic random background switching encountered large local images and showed a confirmation dialog, stopping switching.
+2. Fixed an issue where the prompt text when reapplying the background after a VS Code update still displayed 3.0 version information.
+3. Fixed an issue where clicking "Reapply background" after a VS Code update did not correctly trigger a window reload.
 
 ---
 
-### 謝辞
+### Acknowledgments
 
 - [vscode-background](https://github.com/shalldie/vscode-background)
 - [feature_restart_random_image](https://github.com/AShujiao/vscode-background-cover/pull/2)
-- [Canvas-nest.js](https://github.com/hustcc/canvas-nest.js) ウェブパーティクル背景プラグイン
+- [Canvas-nest.js](https://github.com/hustcc/canvas-nest.js) web particle background plugin
 
-## コントリビューター
+## Contributors
 
 [<img alt="AShujiao" src="https://avatars2.githubusercontent.com/u/14969576?s=460&v=4" width="90">](https://github.com/AShujiao)
 [<img alt="yjhmelody" src="https://avatars0.githubusercontent.com/u/16250688?s=460&v=4" width="90">](https://github.com/yjhmelody)
@@ -193,16 +193,16 @@ A: 拡張機能が自動でパスワードを要求します。または手動�
 [<img alt="Aierlanta" src="https://avatars.githubusercontent.com/u/90670661?v=4" width="90">](https://github.com/Aierlanta)
 [<img alt="MaxQian888" src="https://github.com/MaxQian888.png?size=90" width="90">](https://github.com/MaxQian888)
 
-### 関連情報
+### Related Information
 
 - [GitHub](https://github.com/AShujiao/vscode-background-cover)
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=manasxx.background-cover)
 
-**作者を支援**
-> この拡張機能が役立った場合は、作者にコーヒーをおごってあげてください。
+**Support the author**
+> If this extension is useful, please treat the author to a coffee.
 
 [<img alt="lauset" src="https://zuhaowan-video.oss-cn-beijing.aliyuncs.com/1587571200/177327269-5cd91cdc-ffeb-4e1d-9193-abe5d2bb6b95.jpg" width="260">](https://github.com/lauset)
 
-## 📄 ライセンス
+## 📄 License
 
-このプロジェクトは [MIT ライセンス](LICENSE) の下で提供されています。
+This project is released under the [MIT License](LICENSE).

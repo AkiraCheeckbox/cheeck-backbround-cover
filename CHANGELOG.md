@@ -4,289 +4,289 @@
  * @Date: 2022-07-05 20:09:56
  * @FilePath: \vscode-background-cover\CHANGELOG.md
 -->
-## 更新日志
+## Changelog
 
 #### ver 3.6.1 (2026/08/18)
 
-    1. 修复多窗口独立背景模式下，透明度 / 模糊度仍按全局设置共享的问题：现在每个窗口（工作区）可以各自保存并显示不同的透明度与模糊度数值，webview 滑块、树视图与设置面板均展示当前窗口实际生效的值，不再互相串值（独立模式下不再回写全局 settings.json；切回"全部窗口共用"后恢复全局共享行为）。
+    1. Fixed an issue in multi-window independent background mode where opacity / blur were still shared via global settings: now each window (workspace) can save and display different opacity and blur values, and the webview sliders, tree view, and settings panel all show the values currently active in the active window, without cross-contamination (in independent mode the values are no longer written back to the global settings.json; switching back to "Share across all windows" restores the global shared behavior).
 
 #### ver 3.6.0 (2026/08/14)
 
-    1. 新增多窗口独立背景，每个窗口可显示各自的背景图（可在高级设置中切回全部窗口共用）（[#226](https://github.com/AShujiao/vscode-background-cover/pull/226) by @Aierlanta）。
-    2. 优化多窗口授权体验，新开窗口不再反复弹出 UAC 授权窗口。
-    3. 优化自动换图容错，网络失败会静默重试或换图，不再弹窗打断（[#225](https://github.com/AShujiao/vscode-background-cover/pull/225) by @Aierlanta）。
+    1. Added multi-window independent backgrounds; each window can display its own background image (can be switched back to sharing across all windows in advanced settings) ([#226](https://github.com/AShujiao/vscode-background-cover/pull/226) by @Aierlanta).
+    2. Optimized the multi-window authorization experience; new windows no longer repeatedly pop up UAC authorization dialogs.
+    3. Improved auto background switching fault tolerance; network failures silently retry or switch images, no longer interrupting with a dialog ([#225](https://github.com/AShujiao/vscode-background-cover/pull/225) by @Aierlanta).
 
-    感谢 @Aierlanta 的贡献！
+    Thanks to @Aierlanta for the contribution!
 
 #### ver 3.5.3 (2026/07/06)
 
-    1. 修复 VS Code 更新后背景不生效、必须手动关闭再重新打开才生效的问题（现代 VS Code 的核心界面编译缓存由主进程持有，软重载无法清除，现在会引导完全退出并重启）。
-    2. 修复较新版本 VS Code 安全策略（Trusted Types）下打补丁后背景 / 宠物 / 粒子完全不显示的问题（注入方式重构为「稳定引导 + 外置动态脚本」）。
-    3. 新增适配 Cursor Agent Window（Glass 窗口）背景显示，复用附加 bundle 机制自动打补丁与卸载还原（[#214](https://github.com/AShujiao/vscode-background-cover/pull/214) by @Aierlanta）。
-    4. 优化仅切换背景图片时不再重建装饰运行时，宠物位置与粒子状态得以保留。
-    5. 装饰配置面板「重启生效」按钮移到顶部并优化提示文案。 
+    1. Fixed an issue where the background was not applied after a VS Code update and required manually closing and reopening to take effect (modern VS Code holds the core UI compile cache in the main process, which cannot be cleared by a soft reload, so the user is now guided to fully quit and restart).
+    2. Fixed an issue where, under newer VS Code security policy (Trusted Types), the background / pets / particles did not show at all after patching (injection method was rebuilt to "stable bootstrap + external dynamic script").
+    3. Added support for background display in the Cursor Agent Window (Glass window), reusing the additional bundle mechanism to automatically patch and restore on uninstall ([#214](https://github.com/AShujiao/vscode-background-cover/pull/214) by @Aierlanta).
+    4. Optimized so that only switching the background image no longer rebuilds the decoration runtime, preserving pet positions and particle state.
+    5. Moved the "Apply on restart" button in the decoration settings panel to the top and optimized the prompt text. 
 
 #### ver 3.5.2 (2026/06/04)
 
-    1. 修复新版本 VS Code（如 1.123.0）因 Node 升级移除 `util.isObject` 函数，导致首次初始化报错 `Failed to write CSS file: TypeError: Node.util.isObject is not a function` 的问题（将已停止维护的 `sudo-prompt` 依赖替换为官方维护的 `@vscode/sudo-prompt`）([#205](https://github.com/AShujiao/vscode-background-cover/issues/205))。
+    1. Fixed an issue where newer VS Code (e.g. 1.123.0) removed `util.isObject` due to a Node upgrade, causing the first initialization to report `Failed to write CSS file: TypeError: Node.util.isObject is not a function` (replaced the unmaintained `sudo-prompt` dependency with the officially maintained `@vscode/sudo-prompt`) ([#205](https://github.com/AShujiao/vscode-background-cover/issues/205)).
 
 #### ver 3.5.1 (2026/05/25)
 
-    1. 修复自动随机更换背景时遇到大体积本地图片会弹出确认提示并阻断轮播的问题；后台自动换图现在会直接应用，手动选择大图仍保留确认提示。
-    2. 修复 VS Code 更新后重新应用背景的提示文案仍显示 3.0 版本信息的问题。
-    3. 修复 VS Code 更新后点击确认重新应用背景时未正确触发窗口重载的问题。
+    1. Fixed an issue where automatic random background switching encountered large local images and showed a confirmation prompt, interrupting the slideshow; background auto-switching now applies directly, while manual selection of large images still keeps the confirmation prompt.
+    2. Fixed an issue where the prompt text for reapplying the background after a VS Code update still displayed 3.0 version information.
+    3. Fixed an issue where clicking confirm to reapply the background after a VS Code update did not correctly trigger a window reload.
 
 #### ver 3.5.0 (2026/05/23)
 
-    1. 支持 VS Code AgentView / Agent Sessions 独立窗口背景注入，安装与卸载流程会同步处理 `vs/sessions/sessions.desktop.main.js` ([#197](https://github.com/AShujiao/vscode-background-cover/pull/197) by @MaxQian888)
-    2. 新增 Vue 驱动的 Studio 可视化配置面板，整合首页、在线图库、本地图库、高级设置与装饰效果配置。
-    3. 新增界面主题选择，默认主题之外增加守望主题，提供偏游戏 HUD 的橙蓝高对比配置体验。
-    4. 新增本地图库预览、最近使用图片、文件夹分页与拖拽设置背景，配置入口更直观。
-    5. 在线页顶部新增输入 URL 入口，本地页聚焦本地文件、目录与最近使用管理。
-    6. 顶部小宠物配置统一到 Studio，并扩展小宠物列表与资源预览。
-    7. 新增本机 Codex 宠物同步，自动读取 `~/.codex/pets` 或 `CODEX_HOME/pets` 下的 `pet.json` 与 `spritesheet.webp`。
-    8. 新增宠物冒泡文案自定义功能，支持多行配置；未配置时继续使用预置文案。
-    9. 优化背景热更新底层与在线随机图缓存策略，提升快速切换和自动轮播稳定性。
-    10. 修复 macOS 下赞助作者按钮无法打开的问题。
-    11. 优化打包配置，排除 webview 开发依赖和源码，VSIX 包体显著减小。
+    1. Added support for background injection in VS Code AgentView / Agent Sessions independent windows; installation and uninstallation synchronize processing of `vs/sessions/sessions.desktop.main.js` ([#197](https://github.com/AShujiao/vscode-background-cover/pull/197) by @MaxQian888)
+    2. Added a Vue-driven Studio visual configuration panel, integrating Home, online gallery, local gallery, advanced settings, and decoration effect configuration.
+    3. Added UI theme selection; in addition to the default theme, the Overwatch theme has been added, providing a game-HUD-like orange-blue high-contrast configuration experience.
+    4. Added local gallery preview, recently used images, folder pagination, and drag-and-drop background setting for a more intuitive configuration entry.
+    5. Added a URL input entry at the top of the online page; the local page focuses on local files, directories, and recently used management.
+    6. Unified top pet configuration in Studio, expanded the pet list, and added resource preview.
+    7. Added local Codex pet sync, automatically reading `pet.json` and `spritesheet.webp` from `~/.codex/pets` or `CODEX_HOME/pets`.
+    8. Added custom speech bubble text for pets, supporting multi-line configuration; if not configured, preset text continues to be used.
+    9. Optimized the background hot-update backend and online random image caching strategy, improving stability for quick switching and auto slideshow.
+    10. Fixed an issue where the sponsor author button could not open on macOS.
+    11. Optimized packaging configuration to exclude webview dev dependencies and source code, significantly reducing the VSIX package size.
 
-    感谢 @MaxQian888 的贡献！
+    Thanks to @MaxQian888 for the contribution!
 
 #### ver 0.1.0 (2018/10/17)
-	第一版发布
+	First release
 
 #### ver 1.0.0 (2018/11/08)
-	添加随机更换背景的功能
+	Added random background switching feature
 
 #### ver 1.1.0 (2019/01/04)
-	添加卸载钩子
+	Added uninstall hook
 
 #### ver 1.1.1 (2019/03/16)
-	增加图片透明度（对于亮度低的图片）
+	Increased image transparency (for low-brightness images)
 	
 #### ver 1.5.1 (2019/03/28)
-	1.更新卸载钩子的实现方式
-    2.对图片路径增加检测及自动转换
-    3.状态栏底部增加切换图片功能（配置随机背景图文件夹时可用）
+	1. Updated the uninstall hook implementation.
+    2. Added detection and automatic conversion for image paths.
+    3. Added a bottom status bar switch image feature (available when a random background image folder is configured).
 
 #### ver 1.5.2 (2019/04/08)
-	1.暂时去除图片路径检测
+	1. Temporarily removed image path detection.
 
 #### ver 2.0.0 (2019/06/05)
-	1.重写功能，添加独立配置，使用更方便
-    2.不再通过监听设置进行更新背景
-    3.去除默认背景图
+	1. Rewrote features, added independent configuration, making it more convenient to use.
+    2. No longer updates the background by monitoring settings.
+    3. Removed the default background image.
 
 #### ver 2.0.1 (2019/06/10)
-	1.下拉列表添加图标、文字对齐
+	1. Added icons and text alignment to the dropdown list.
 	
 #### ver 2.1.0 (2019/06/14)
-	1.添加每次启动时随机自动更换背景图功能（请先添加目录后开启）
+	1. Added random automatic background switching on each startup (please add a directory before enabling).
 
 #### ver 2.2.0 (2019/06/20)
-	1.添加快捷键ctrl + shift + F7 随机更新背景并重启
+	1. Added shortcut ctrl + shift + F7 to randomly update the background and restart.
 	
 #### ver 2.2.1 (2019/07/18)
-	1.支持更多的图片格式
+	1. Supports more image formats.
 
 #### ver 2.2.2 (2019/08/15)
-	1.适配1.38版本CSS路径
-	2.优化代码
+	1. Adapted CSS path for version 1.38.
+	2. Optimized code.
 
 #### ver 2.2.3 (2019/10/30)
-	1.菜单列表文字对齐
-    2.定义扩展类型为"ui"
+	1. Aligned menu list text.
+    2. Defined the extension type as "ui".
 
 #### ver 2.2.4 (2020/07/28)
-	1.修复卸载钩子失效的问题
-    2.最低支持版本改为1.38.0
+	1. Fixed an issue where the uninstall hook was not working.
+    2. Changed the minimum supported version to 1.38.0.
 
 #### ver 2.2.5 (2021/03/08)
-	1.本地图片文件转base64(修复1.54.1版本后不支持本地文件的问题)
-    2.图片读取失败提示语优化
+	1. Converted local image files to base64 (fixed the issue where local files were not supported after version 1.54.1).
+    2. Optimized image read failure messages.
 
 #### ver 2.2.6 (2021/07/10)
-	1.将图片不透明度最低值改为0.59
+	1. Changed the minimum image opacity value to 0.59.
 
 #### ver 2.2.7 (2021/08/04)
-	1.将背景默认居中
+	1. Set the default background to centered.
 
 #### ver 2.2.8 (2022/01/24)
-	1.MacOS下可通过输入密码来获取权限
-	2.依赖升级
+	1. On macOS, permissions can be obtained by entering a password.
+	2. Dependency upgrades.
 
 #### ver 2.2.9 (2022/03/26)
 
-    1.优化目录不支持大写图片格式的问题
+    1. Optimized the issue where directories did not support uppercase image formats.
 
 #### ver 2.3.0 (2022/07/05)
 
-    1.添加更多菜单项
+    1. Added more menu items.
 
 #### ver 2.3.2 (2023/03/07)
 
-    1.优化菜单
+    1. Optimized the menu.
 
 #### ver 2.3.3 (2023/06/05)
 
-    1.支持jfif格式图片
-	2.调整菜单
+    1. Supports jfif format images.
+	2. Adjusted the menu.
 #### ver 2.3.4 (2023/08/18)
 
-    1.更换二维码图片
+    1. Replaced the QR code image.
 
 #### ver 2.3.5 (2023/09/20)
 
-    1.增加更新背景图异常提示
-    2.首次打开弹出加群提醒
+    1. Added background update exception prompts.
+    2. First-time open group-join reminder popup.
 #### ver 2.3.6 (2023/12/06)
 
-    1.更换二维码图片
+    1. Replaced the QR code image.
 
 #### ver 2.4.0 (2024/05/15)
 
-    1.支持设置图片填充方式及图片位置
+    1. Supports setting image fill mode and image position.
 
 #### ver 2.5.0 (2024/05/26)
 
-    1.支持在线图片快速设置背景！！！  
-	2.在线社区集成进vscode左侧栏，发布图片、设置默认页  
-	3.社区支持注册（需邮箱激活）  
-	4.社区支持回复主题，上传图片、添加第三方图片（用于设置背景图）  
-	5.社区支持发布个人主题（私人图库）（需要作者审核）  
-	6.修复开启自动更换的异常 （2.5.1/2024.05.27）  
+    1. Supports quick online image background setting!!!  
+	2. Integrated online community into the VS Code left sidebar, post images, set default page.  
+	3. Community supports registration (email activation required).  
+	4. Community supports replying to topics, uploading images, adding third-party images (for setting background image).  
+	5. Community supports publishing personal themes (private gallery) (requires author approval).  
+	6. Fixed auto-switching exception (2.5.1/2024.05.27)  
 
 #### ver 2.5.2 (2024/06/24)
 
-    1.修复图片无法显示的bug
+    1. Fixed the bug where images could not be displayed.
 
 #### ver 2.5.3 (2024/06/30)
 
-      1.修复mac下本地图片不显示问题
+      1. Fixed the issue where local images were not displayed on Mac.
 
 #### ver 2.5.4 (2024/08/22)
 
-      1.修复Linux系统本地图片无法使用的问题
+      1. Fixed the issue where local images could not be used on Linux.
 
 #### ver 2.5.5 (2024/10/05)
 
-      1.修复vsc1.94.0版本导致的异常
+      1. Fixed the abnormality caused by vsc1.94.0.
 
 #### ver 2.6.2 (2024/11/12)
 
-    1.底层实现方式由css改为js（修复重载不生效的问题）  
-    2.增加背景模糊效果  
-    3.自动获取文件写入权限（无需管理员身份运行）  
-    4.监听主题变化，自动触发适配背景提醒  
-    5.增加备份源文件，方便异常手动恢复  
-    6.部分代码优化
+    1. The underlying implementation was changed from CSS to JS (fixed the issue where reload did not take effect).  
+    2. Added background blur effect.  
+    3. Automatically obtains file write permissions (no need to run as administrator).  
+    4. Listens for theme changes and automatically triggers background adaptation reminders.  
+    5. Added backup of source files for easy manual recovery in case of exceptions.  
+    6. Partial code optimization.
 
 #### ver 2.6.3 (2025/01/14)
 
-    1.首次获取权限备份文件时增加引导提示  
-    2.修复使用ctrl + shift + F7 随机更新背景异常的问题
+    1. Added a guide prompt when obtaining permission backup files for the first time.  
+    2. Fixed the issue where using ctrl + shift + F7 to randomly update the background was abnormal.
 
 
 #### ver 2.6.5 (2025/03/05)
 
-    1.更新vscode后增加重新应用背景提醒  
-    2.使用在线图库设置背景后将帖子关联为默认页面
+    1. Added reapply background reminder after VS Code update.  
+    2. After setting the background from the online gallery, the post is associated as the default page.
 
 #### ver 2.7.0 (2025/05/05)
 
-  1.🎉新功能：~鼠标跟随粒子效果🎉 （原[vscode-nest](https://github.com/AShujiao/vscode-nest)插件已弃用，集成到本扩展中）  
-   2.部分配置输入框显示当前配置值
+  1.🎉 New feature: ~Mouse-following particle effects~ 🎉 (the original [vscode-nest](https://github.com/AShujiao/vscode-nest) extension has been deprecated and integrated into this extension).  
+   2. Some configuration input boxes now display the current configured value.
 
 #### ver 2.7.1 (2025/12/04)
 
-  1.图片适应模式增加（居中）模式
+  1. Added center mode to image fitting mode.
 
 #### ver 2.8.0 (2025/12/14)
 
-感谢 [@WaaSakura](https://github.com/WaaSakura) 提交的[PR](https://github.com/AShujiao/vscode-background-cover/pull/173)
+Thanks to [@WaaSakura](https://github.com/WaaSakura) for the [PR](https://github.com/AShujiao/vscode-background-cover/pull/173)
 
-    1.新增支持code-server平台     
-    2.输入图片地址功能扩展    
-        * 支持返回多图JSON格式API地址
-        * 支持静态html（解析a标签图片）   
-        * 支持在线图库网站（vs.20988.xyz 解析帖子内的图片） 
-    3. 支持在线图库帖子设置为背景图库（通过帖子列表、详情三个点按钮触发）
+    1. Added support for the code-server platform.     
+    2. Extended the image URL input feature:    
+        * Supports JSON API addresses that return multiple images
+        * Supports static HTML (parses `<a>` tag images)   
+        * Supports online gallery websites (vs.20988.xyz parses images in posts) 
+    3. Supports setting online gallery posts as a background gallery (triggered via the three-dot menu on post list and detail pages).
 
 #### ver 2.8.1 (2025/12/19)
 
-    1.修复vs更新后“重新应用背景”与“自动更换背景”事件冲突 
+    1. Fixed the conflict between the "Reapply background" and "Auto-switch background" events after a VS Code update. 
     
 #### ver 2.8.2 (2025/12/21)
 
-    1.代码优化与依赖更新
+    1. Code optimization and dependency updates.
 
 #### ver 3.0.0 (2025/12/21)
 
-    1.🎉 重大更新：支持背景图热更新，切换图片无需重启 VSCode 即刻生效！
-    2.✨ 新增左侧侧边栏可视化配置面板，操作更便捷
-    3.🌐 新增多语言支持（国际化）
-    4.🔄 新增多图定时自动轮播功能
-    5.🛠 底层架构重构与性能优化
-    ⚠️ 注意：本次更新涉及底层变动，首次使用需重新获取权限（Hook）并重启一次 VSCode 后生效。 
+    1. 🎉 Major update: supports background hot update; switching images takes effect immediately without restarting VSCode!
+    2. ✨ Added a left sidebar visual configuration panel for more convenient operation.
+    3. 🌐 Added multi-language support (internationalization).
+    4. 🔄 Added timed auto slideshow for multiple images.
+    5. 🛠 Underlying architecture refactoring and performance optimization.
+    ⚠️ Note: This update involves underlying changes. First use requires reacquiring permissions (Hook) and restarting VSCode once to take effect. 
 
 #### ver 3.1.0 (2025/12/25)
 
-    1.🎉 支持视频文件做为背景
-    2.✨ 增加刷新功能
-    3.🌐 左侧面板已做为默认菜单
-    ⚠️ 注意：本次更新涉及底层变动，需重新获取权限（Hook）并重启一次 VSCode 后生效。
+    1. 🎉 Supports video files as backgrounds.
+    2. ✨ Added refresh function.
+    3. 🌐 The left panel is now the default menu.
+    ⚠️ Note: This update involves underlying changes. Reacquiring permissions (Hook) and restarting VSCode once is required to take effect.
 
 #### ver 3.1.1 (2025/12/25)
 
-    1. code-server 平台背景图资源支持 HTTPS 直接加载，修复 `__BACKGROUND_COVER_BASE__` 404 与 CSP 报错
-    2. 新增在线随机图 API 识别优化：无文件扩展名的图片地址不再缓存，直接按单图处理
-    3. 在线图库探测逻辑改进，控制台提示更准确
+    1. On the code-server platform, background image resources now support direct HTTPS loading, fixing `__BACKGROUND_COVER_BASE__` 404 and CSP errors.
+    2. Added optimization for online random image API recognition: image addresses without file extensions are no longer cached and are treated as single images directly.
+    3. Improved online gallery detection logic with more accurate console prompts.
 
 #### ver 3.2.0 (2025/12/28)
 
-    1. 增加查看缓存文件功能
-    2. 新增顶部导航栏小宠物 (宠物Mod来自：https://github.com/tonybaloney/vscode-pets)
-    3. 在线随机图下载流程全面升级：自定义请求头、自动跟随 30x 重定向，并按照 Content-Type 写入缓存文件，`autoInterval` 轮播可直接使用无扩展名 API。
-    4. 单图识别与回退逻辑优化：不再重复 fallback URL，手动选择文件与在线路径共用同一套缓存清理，明确的单图链接会自动关闭自动更新并提示原因。
-    5. 背景更新成功提示仅在真实写入成功后展示，下载失败会直接抛出错误，避免误导用户。
+    1. Added the ability to view cache files.
+    2. Added a top navigation bar pet (pet mod from: https://github.com/tonybaloney/vscode-pets).
+    3. The online random image download process has been fully upgraded: custom request headers, automatic following of 30x redirects, and writing cache files according to Content-Type, so `autoInterval` slideshow can directly use extensionless APIs.
+    4. Optimized single-image recognition and fallback logic: no longer repeats fallback URLs, manual file selection and online paths share the same cache cleanup, and explicit single-image links automatically disable auto-update and prompt the reason.
+    5. Background update success prompts are now only shown after the actual write succeeds; download failures throw errors directly, avoiding misleading users.
 
 #### ver 3.2.2 (2025/12/29)
 
-    1. 修复linux系统异常
+    1. Fixed Linux system exceptions.
 
 #### ver 3.2.3 (2026/01/05)
 
-    1. 顶部小宠物默认为关闭状态
-    2. 增加小宠物MOD（皮卡丘、恐龙）及留言
+    1. The top pet is now disabled by default.
+    2. Added pet MODs (Pikachu, Dinosaur) and messages.
 
 #### ver 3.2.5 (2026/04/13)
 
-    1. 修复使用远程随机图片API自动切换时出现 "Lock file is already being held" 错误 ([#193](https://github.com/AShujiao/vscode-background-cover/pull/193) by @Aierlanta)
-    2. 优化自动轮播任务防止并发执行 ([#193](https://github.com/AShujiao/vscode-background-cover/pull/193) by @Aierlanta)
-    3. 修复 code-server 模式下静态资源浏览器缓存导致背景不更新的问题 ([#194](https://github.com/AShujiao/vscode-background-cover/pull/194) by @WaaSakura)
+    1. Fixed the "Lock file is already being held" error when using remote random image APIs for auto-switching ([#193](https://github.com/AShujiao/vscode-background-cover/pull/193) by @Aierlanta).
+    2. Optimized the auto slideshow task to prevent concurrent execution ([#193](https://github.com/AShujiao/vscode-background-cover/pull/193) by @Aierlanta).
+    3. Fixed the issue in code-server mode where the browser cache for static resources caused the background not to update ([#194](https://github.com/AShujiao/vscode-background-cover/pull/194) by @WaaSakura).
 
-    感谢 @Aierlanta 和 @WaaSakura 的贡献！
+    Thanks to @Aierlanta and @WaaSakura for their contributions!
 
 #### ver 3.5.0 (2026/05/23)
 
-1. 支持 VS Code AgentView / Agent Sessions 独立窗口背景显示 ([#197](https://github.com/AShujiao/vscode-background-cover/pull/197) by @MaxQian888)。
-2. 新增 Vue 驱动的 Studio 可视化配置面板。
-3. 新增默认/守望界面主题切换。
-4. 新增本地图库预览、最近使用、分页浏览和拖拽设置背景。
-5. 新增本机 Codex 宠物同步，支持 `~/.codex/pets` 与 `CODEX_HOME/pets`。
-6. 新增宠物冒泡文案自定义功能，支持多行配置，留空使用预置文案。
-7. 在线页顶部新增输入 URL 入口，本地页聚焦本地文件与目录管理。
-8. 优化背景热更新、在线随机图缓存与快速切换并发控制。
-9. 修复 macOS 下赞助作者按钮无法打开的问题。
-10. 优化 VSIX 打包配置，显著减小包体。
+1. Added support for background display in VS Code AgentView / Agent Sessions independent windows ([#197](https://github.com/AShujiao/vscode-background-cover/pull/197) by @MaxQian888).
+2. Added a Vue-driven Studio visual configuration panel.
+3. Added default / Overwatch UI theme switching.
+4. Added local gallery preview, recently used, pagination browsing, and drag-and-drop background setting.
+5. Added local Codex pet sync, supporting `~/.codex/pets` and `CODEX_HOME/pets`.
+6. Added custom speech bubble text for pets, supporting multi-line configuration; uses preset text when left blank.
+7. Added a URL input entry at the top of the online page; the local page focuses on local files and directory management.
+8. Optimized background hot update, online random image caching, and quick-switch concurrency control.
+9. Fixed the issue where the sponsor author button could not open on macOS.
+10. Optimized VSIX packaging configuration, significantly reducing package size.
 
 
 #### ver 3.5.1 (2026/05/25)
 
-1. 修复自动随机更换背景时遇到大体积本地图片会弹出确认提示并阻断轮播的问题。
-2. 修复 VS Code 更新后重新应用背景的提示文案仍显示 3.0 版本信息的问题。
-3. 修复 VS Code 更新后点击确认重新应用背景时未正确触发窗口重载的问题。
+1. Fixed the issue where automatic random background switching encountered large local images and showed a confirmation prompt, interrupting the slideshow.
+2. Fixed the issue where the prompt text for reapplying the background after a VS Code update still displayed 3.0 version information.
+3. Fixed the issue where clicking confirm to reapply the background after a VS Code update did not correctly trigger a window reload.
 
 #### ver 3.5.2 (2026/06/04)
 
-1. 修复新版本 VS Code（如 1.123.0）因 Node 移除 `util.isObject`，首次初始化报错 `Failed to write CSS file: TypeError: Node.util.isObject is not a function` 的问题（将 `sudo-prompt` 替换为官方维护的 `@vscode/sudo-prompt`）。
+1. Fixed the issue where newer VS Code (e.g. 1.123.0) removed `util.isObject` due to a Node upgrade, causing the first initialization to report `Failed to write CSS file: TypeError: Node.util.isObject is not a function` (replaced `sudo-prompt` with the officially maintained `@vscode/sudo-prompt`).
